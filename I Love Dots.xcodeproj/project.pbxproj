@@ -1,0 +1,570 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FF4A39EB1B3B4A0C00CBFA13 /* I_Love_DotsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A39EA1B3B4A0C00CBFA13 /* I_Love_DotsTests.swift */; };
+		FF4A39F61B3B4A0D00CBFA13 /* I_Love_DotsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A39F51B3B4A0D00CBFA13 /* I_Love_DotsUITests.swift */; };
+		FF4A3A041B3B4B0600CBFA13 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF4A3A031B3B4B0600CBFA13 /* Images.xcassets */; };
+		FF4A3A061B3B4B2600CBFA13 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF4A3A051B3B4B2600CBFA13 /* Info.plist */; };
+		FF4A3A101B3B4B3600CBFA13 /* DBasicLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A3A071B3B4B3600CBFA13 /* DBasicLevel.swift */; };
+		FF4A3A111B3B4B3600CBFA13 /* GameModeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A3A081B3B4B3600CBFA13 /* GameModeSelector.swift */; };
+		FF4A3A121B3B4B3600CBFA13 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A3A091B3B4B3600CBFA13 /* GameOver.swift */; };
+		FF4A3A131B3B4B3600CBFA13 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A3A0A1B3B4B3600CBFA13 /* GameScene.swift */; };
+		FF4A3A141B3B4B3600CBFA13 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A3A0B1B3B4B3600CBFA13 /* GameViewController.swift */; };
+		FF4A3A151B3B4B3600CBFA13 /* Infinite.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A3A0C1B3B4B3600CBFA13 /* Infinite.swift */; };
+		FF4A3A161B3B4B3600CBFA13 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A3A0D1B3B4B3600CBFA13 /* LoadingScreen.swift */; };
+		FF4A3A171B3B4B3600CBFA13 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A3A0E1B3B4B3600CBFA13 /* MainMenu.swift */; };
+		FF4A3A181B3B4B3600CBFA13 /* TimeTrial.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A3A0F1B3B4B3600CBFA13 /* TimeTrial.swift */; };
+		FF4A3A1C1B3B4B7600CBFA13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A3A1B1B3B4B7600CBFA13 /* AppDelegate.swift */; };
+		FF4A3A211B3B4BA300CBFA13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF4A3A1D1B3B4BA300CBFA13 /* Main.storyboard */; };
+		FF4A3A221B3B4BA300CBFA13 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF4A3A1F1B3B4BA300CBFA13 /* LaunchScreen.xib */; };
+		FFFC62CB1B3B615B00B3D8CF /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FFFC62CA1B3B615B00B3D8CF /* GameScene.sks */; };
+		FFFC62CD1B3B620B00B3D8CF /* blop.wav in Resources */ = {isa = PBXBuildFile; fileRef = FFFC62CC1B3B620B00B3D8CF /* blop.wav */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FF4A39E71B3B4A0C00CBFA13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF4A39C61B3B4A0C00CBFA13 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF4A39CD1B3B4A0C00CBFA13;
+			remoteInfo = "I Love Dots";
+		};
+		FF4A39F21B3B4A0D00CBFA13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF4A39C61B3B4A0C00CBFA13 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF4A39CD1B3B4A0C00CBFA13;
+			remoteInfo = "I Love Dots";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FF4A39CE1B3B4A0C00CBFA13 /* I Love Dots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "I Love Dots.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF4A39E61B3B4A0C00CBFA13 /* I Love DotsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "I Love DotsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF4A39EA1B3B4A0C00CBFA13 /* I_Love_DotsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_Love_DotsTests.swift; sourceTree = "<group>"; };
+		FF4A39EC1B3B4A0C00CBFA13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF4A39F11B3B4A0D00CBFA13 /* I Love DotsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "I Love DotsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF4A39F51B3B4A0D00CBFA13 /* I_Love_DotsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_Love_DotsUITests.swift; sourceTree = "<group>"; };
+		FF4A39F71B3B4A0D00CBFA13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF4A3A031B3B4B0600CBFA13 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FF4A3A051B3B4B2600CBFA13 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF4A3A071B3B4B3600CBFA13 /* DBasicLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBasicLevel.swift; sourceTree = "<group>"; };
+		FF4A3A081B3B4B3600CBFA13 /* GameModeSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModeSelector.swift; sourceTree = "<group>"; };
+		FF4A3A091B3B4B3600CBFA13 /* GameOver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
+		FF4A3A0A1B3B4B3600CBFA13 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		FF4A3A0B1B3B4B3600CBFA13 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		FF4A3A0C1B3B4B3600CBFA13 /* Infinite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Infinite.swift; sourceTree = "<group>"; };
+		FF4A3A0D1B3B4B3600CBFA13 /* LoadingScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
+		FF4A3A0E1B3B4B3600CBFA13 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		FF4A3A0F1B3B4B3600CBFA13 /* TimeTrial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeTrial.swift; sourceTree = "<group>"; };
+		FF4A3A1B1B3B4B7600CBFA13 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FF4A3A1E1B3B4BA300CBFA13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FF4A3A201B3B4BA300CBFA13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		FF4A3A251B3B4C1A00CBFA13 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		FF4A3A271B3B4C5C00CBFA13 /* GameplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameplayKit.framework; path = "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/GameplayKit.framework"; sourceTree = "<absolute>"; };
+		FF4A3A291B3B4C9F00CBFA13 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		FFFC62CA1B3B615B00B3D8CF /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		FFFC62CC1B3B620B00B3D8CF /* blop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = blop.wav; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FF4A39CB1B3B4A0C00CBFA13 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF4A39E31B3B4A0C00CBFA13 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF4A39EE1B3B4A0D00CBFA13 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FF4A39C51B3B4A0C00CBFA13 = {
+			isa = PBXGroup;
+			children = (
+				FF4A3A291B3B4C9F00CBFA13 /* GameKit.framework */,
+				FF4A3A271B3B4C5C00CBFA13 /* GameplayKit.framework */,
+				FF4A3A251B3B4C1A00CBFA13 /* StoreKit.framework */,
+				FF4A39D01B3B4A0C00CBFA13 /* I Love Dots */,
+				FF4A39E91B3B4A0C00CBFA13 /* I Love DotsTests */,
+				FF4A39F41B3B4A0D00CBFA13 /* I Love DotsUITests */,
+				FF4A39CF1B3B4A0C00CBFA13 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FF4A39CF1B3B4A0C00CBFA13 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FF4A39CE1B3B4A0C00CBFA13 /* I Love Dots.app */,
+				FF4A39E61B3B4A0C00CBFA13 /* I Love DotsTests.xctest */,
+				FF4A39F11B3B4A0D00CBFA13 /* I Love DotsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FF4A39D01B3B4A0C00CBFA13 /* I Love Dots */ = {
+			isa = PBXGroup;
+			children = (
+				FF4A3A1B1B3B4B7600CBFA13 /* AppDelegate.swift */,
+				FF4A3A071B3B4B3600CBFA13 /* DBasicLevel.swift */,
+				FF4A3A081B3B4B3600CBFA13 /* GameModeSelector.swift */,
+				FF4A3A091B3B4B3600CBFA13 /* GameOver.swift */,
+				FFFC62CA1B3B615B00B3D8CF /* GameScene.sks */,
+				FF4A3A0A1B3B4B3600CBFA13 /* GameScene.swift */,
+				FF4A3A0B1B3B4B3600CBFA13 /* GameViewController.swift */,
+				FF4A3A0C1B3B4B3600CBFA13 /* Infinite.swift */,
+				FF4A3A0D1B3B4B3600CBFA13 /* LoadingScreen.swift */,
+				FF4A3A0E1B3B4B3600CBFA13 /* MainMenu.swift */,
+				FF4A3A0F1B3B4B3600CBFA13 /* TimeTrial.swift */,
+				FF4A3A1D1B3B4BA300CBFA13 /* Main.storyboard */,
+				FF4A3A1F1B3B4BA300CBFA13 /* LaunchScreen.xib */,
+				FFFC62CC1B3B620B00B3D8CF /* blop.wav */,
+				FF4A3A031B3B4B0600CBFA13 /* Images.xcassets */,
+				FF4A3A051B3B4B2600CBFA13 /* Info.plist */,
+			);
+			path = "I Love Dots";
+			sourceTree = "<group>";
+		};
+		FF4A39E91B3B4A0C00CBFA13 /* I Love DotsTests */ = {
+			isa = PBXGroup;
+			children = (
+				FF4A39EA1B3B4A0C00CBFA13 /* I_Love_DotsTests.swift */,
+				FF4A39EC1B3B4A0C00CBFA13 /* Info.plist */,
+			);
+			path = "I Love DotsTests";
+			sourceTree = "<group>";
+		};
+		FF4A39F41B3B4A0D00CBFA13 /* I Love DotsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FF4A39F51B3B4A0D00CBFA13 /* I_Love_DotsUITests.swift */,
+				FF4A39F71B3B4A0D00CBFA13 /* Info.plist */,
+			);
+			path = "I Love DotsUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FF4A39CD1B3B4A0C00CBFA13 /* I Love Dots */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF4A39FA1B3B4A0D00CBFA13 /* Build configuration list for PBXNativeTarget "I Love Dots" */;
+			buildPhases = (
+				FF4A39CA1B3B4A0C00CBFA13 /* Sources */,
+				FF4A39CB1B3B4A0C00CBFA13 /* Frameworks */,
+				FF4A39CC1B3B4A0C00CBFA13 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "I Love Dots";
+			productName = "I Love Dots";
+			productReference = FF4A39CE1B3B4A0C00CBFA13 /* I Love Dots.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FF4A39E51B3B4A0C00CBFA13 /* I Love DotsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF4A39FD1B3B4A0D00CBFA13 /* Build configuration list for PBXNativeTarget "I Love DotsTests" */;
+			buildPhases = (
+				FF4A39E21B3B4A0C00CBFA13 /* Sources */,
+				FF4A39E31B3B4A0C00CBFA13 /* Frameworks */,
+				FF4A39E41B3B4A0C00CBFA13 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FF4A39E81B3B4A0C00CBFA13 /* PBXTargetDependency */,
+			);
+			name = "I Love DotsTests";
+			productName = "I Love DotsTests";
+			productReference = FF4A39E61B3B4A0C00CBFA13 /* I Love DotsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FF4A39F01B3B4A0D00CBFA13 /* I Love DotsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF4A3A001B3B4A0D00CBFA13 /* Build configuration list for PBXNativeTarget "I Love DotsUITests" */;
+			buildPhases = (
+				FF4A39ED1B3B4A0D00CBFA13 /* Sources */,
+				FF4A39EE1B3B4A0D00CBFA13 /* Frameworks */,
+				FF4A39EF1B3B4A0D00CBFA13 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FF4A39F31B3B4A0D00CBFA13 /* PBXTargetDependency */,
+			);
+			name = "I Love DotsUITests";
+			productName = "I Love DotsUITests";
+			productReference = FF4A39F11B3B4A0D00CBFA13 /* I Love DotsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FF4A39C61B3B4A0C00CBFA13 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Chris Gilardi";
+				TargetAttributes = {
+					FF4A39CD1B3B4A0C00CBFA13 = {
+						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 26YT7FJBW3;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
+					};
+					FF4A39E51B3B4A0C00CBFA13 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = FF4A39CD1B3B4A0C00CBFA13;
+					};
+					FF4A39F01B3B4A0D00CBFA13 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = FF4A39CD1B3B4A0C00CBFA13;
+					};
+				};
+			};
+			buildConfigurationList = FF4A39C91B3B4A0C00CBFA13 /* Build configuration list for PBXProject "I Love Dots" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FF4A39C51B3B4A0C00CBFA13;
+			productRefGroup = FF4A39CF1B3B4A0C00CBFA13 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FF4A39CD1B3B4A0C00CBFA13 /* I Love Dots */,
+				FF4A39E51B3B4A0C00CBFA13 /* I Love DotsTests */,
+				FF4A39F01B3B4A0D00CBFA13 /* I Love DotsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FF4A39CC1B3B4A0C00CBFA13 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF4A3A221B3B4BA300CBFA13 /* LaunchScreen.xib in Resources */,
+				FF4A3A061B3B4B2600CBFA13 /* Info.plist in Resources */,
+				FF4A3A041B3B4B0600CBFA13 /* Images.xcassets in Resources */,
+				FFFC62CD1B3B620B00B3D8CF /* blop.wav in Resources */,
+				FFFC62CB1B3B615B00B3D8CF /* GameScene.sks in Resources */,
+				FF4A3A211B3B4BA300CBFA13 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF4A39E41B3B4A0C00CBFA13 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF4A39EF1B3B4A0D00CBFA13 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FF4A39CA1B3B4A0C00CBFA13 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF4A3A151B3B4B3600CBFA13 /* Infinite.swift in Sources */,
+				FF4A3A171B3B4B3600CBFA13 /* MainMenu.swift in Sources */,
+				FF4A3A131B3B4B3600CBFA13 /* GameScene.swift in Sources */,
+				FF4A3A111B3B4B3600CBFA13 /* GameModeSelector.swift in Sources */,
+				FF4A3A101B3B4B3600CBFA13 /* DBasicLevel.swift in Sources */,
+				FF4A3A161B3B4B3600CBFA13 /* LoadingScreen.swift in Sources */,
+				FF4A3A181B3B4B3600CBFA13 /* TimeTrial.swift in Sources */,
+				FF4A3A141B3B4B3600CBFA13 /* GameViewController.swift in Sources */,
+				FF4A3A1C1B3B4B7600CBFA13 /* AppDelegate.swift in Sources */,
+				FF4A3A121B3B4B3600CBFA13 /* GameOver.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF4A39E21B3B4A0C00CBFA13 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF4A39EB1B3B4A0C00CBFA13 /* I_Love_DotsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF4A39ED1B3B4A0D00CBFA13 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF4A39F61B3B4A0D00CBFA13 /* I_Love_DotsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FF4A39E81B3B4A0C00CBFA13 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF4A39CD1B3B4A0C00CBFA13 /* I Love Dots */;
+			targetProxy = FF4A39E71B3B4A0C00CBFA13 /* PBXContainerItemProxy */;
+		};
+		FF4A39F31B3B4A0D00CBFA13 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF4A39CD1B3B4A0C00CBFA13 /* I Love Dots */;
+			targetProxy = FF4A39F21B3B4A0D00CBFA13 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FF4A3A1D1B3B4BA300CBFA13 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF4A3A1E1B3B4BA300CBFA13 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FF4A3A1F1B3B4BA300CBFA13 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF4A3A201B3B4BA300CBFA13 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FF4A39F81B3B4A0D00CBFA13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tom Gilardi (J4NCJXZ9FM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FF4A39F91B3B4A0D00CBFA13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tom Gilardi (J4NCJXZ9FM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FF4A39FB1B3B4A0D00CBFA13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "I Love Dots/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "co.bluetruck.I-Love-Dots";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FF4A39FC1B3B4A0D00CBFA13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "I Love Dots/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "co.bluetruck.I-Love-Dots";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FF4A39FE1B3B4A0D00CBFA13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "I Love DotsTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "co.bluetruck.I-Love-DotsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/I Love Dots.app/I Love Dots";
+			};
+			name = Debug;
+		};
+		FF4A39FF1B3B4A0D00CBFA13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "I Love DotsTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "co.bluetruck.I-Love-DotsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/I Love Dots.app/I Love Dots";
+			};
+			name = Release;
+		};
+		FF4A3A011B3B4A0D00CBFA13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "I Love DotsUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "co.bluetruck.I-Love-DotsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "I Love Dots";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		FF4A3A021B3B4A0D00CBFA13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "I Love DotsUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "co.bluetruck.I-Love-DotsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "I Love Dots";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FF4A39C91B3B4A0C00CBFA13 /* Build configuration list for PBXProject "I Love Dots" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF4A39F81B3B4A0D00CBFA13 /* Debug */,
+				FF4A39F91B3B4A0D00CBFA13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF4A39FA1B3B4A0D00CBFA13 /* Build configuration list for PBXNativeTarget "I Love Dots" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF4A39FB1B3B4A0D00CBFA13 /* Debug */,
+				FF4A39FC1B3B4A0D00CBFA13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF4A39FD1B3B4A0D00CBFA13 /* Build configuration list for PBXNativeTarget "I Love DotsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF4A39FE1B3B4A0D00CBFA13 /* Debug */,
+				FF4A39FF1B3B4A0D00CBFA13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF4A3A001B3B4A0D00CBFA13 /* Build configuration list for PBXNativeTarget "I Love DotsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF4A3A011B3B4A0D00CBFA13 /* Debug */,
+				FF4A3A021B3B4A0D00CBFA13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FF4A39C61B3B4A0C00CBFA13 /* Project object */;
+}
