@@ -11,7 +11,7 @@ import SpriteKit
 import GameKit
 
 class GameOver : SKScene{
-    private let scoreBox: SKShapeNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: 100, height: 100))
+    //private let scoreBox: SKShapeNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: 100, height: 100))
     private let restartLabel: SKLabelNode = SKLabelNode()
     private let thisScore: SKLabelNode = SKLabelNode()
     private let highScore: SKLabelNode = SKLabelNode()
@@ -21,14 +21,15 @@ class GameOver : SKScene{
     private let message = SKLabelNode()
     var gameMode: Int = 0
     var sizeOfView: CGRect = CGRect()
+    let font = "Blackout-Sunrise"       //Change this font to change all the fonts (except the buttons)
     
     override func didMoveToView(view: SKView) {
         
 
         
         //Background Color
-        self.backgroundColor = SKColor.redColor()
-        
+        self.backgroundColor = UIColor(red: 0.94, green: 1.0, blue: 1.0, alpha: 1.0)
+        /*
         //Change the button color based on score
         if(score <= 0){
             scoreBox.fillColor = SKColor.redColor()
@@ -48,12 +49,13 @@ class GameOver : SKScene{
         scoreBox.position = CGPointMake(CGRectGetMidX(self.frame) - 50, CGRectGetMidY(self.frame) - 50)
         //restartButton.name = "rsbutton"
         self.addChild(scoreBox)
-        
-        restartLabel.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) - 20)
+        */
+        restartLabel.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame)/2)
+        restartLabel.fontName = font
         restartLabel.text = String(score)
-        restartLabel.fontSize = 40
+        restartLabel.fontSize = 100
         restartLabel.name = "rslabel"
-        //restartLabel.fontColor = SKColor.whiteColor()
+        restartLabel.fontColor = SKColor.blackColor()
         self.addChild(restartLabel)
         
         //Add the new score and display it
@@ -64,15 +66,21 @@ class GameOver : SKScene{
         
         //Add the loss message
         message.position = CGPointMake(CGRectGetMidX(self.frame), 3*CGRectGetHeight(self.frame)/4)
-        message.fontColor = SKColor.whiteColor()
-        message.fontSize = 30
+        message.fontColor = SKColor.blackColor()
+        message.fontName = font
+        message.fontSize = 50
         self.addChild(message)
         NSNotificationCenter.defaultCenter().postNotificationName("showiAdBanner", object: nil)
         
         let restartButton = SKSpriteNode(imageNamed: "restartbutton")
-        restartButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)/2)
+        restartButton.position = CGPointMake(CGRectGetMidX(self.frame), 3*CGRectGetMaxY(self.frame)/8)
         restartButton.name = "rsbutton"
         self.addChild(restartButton)
+        
+        let mainMenuButton = SKSpriteNode(imageNamed: "mainmenubutton")
+        mainMenuButton.position = CGPointMake(restartButton.position.x, restartButton.position.y - 90)
+        mainMenuButton.name = "mmbutton"
+        self.addChild(mainMenuButton)
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -81,21 +89,41 @@ class GameOver : SKScene{
         let touchedNode = self.nodeAtPoint(positionInScene)
         
         if let name = touchedNode.name {
-            //The first ball that shows up, startball
+            //Restarts the game from the current gamemode
             if name == "rsbutton" || name == "rslabel" {
-                //NSNotificationCenter.defaultCenter().postNotificationName("hideiAdBanner", object: nil)
-                //var bounds: CGRect = UIScreen.mainScreen().bounds
-                NSNotificationCenter.defaultCenter().postNotificationName("showVungleAds", object: nil)
-                let scene =  MainMenu(size: self.size)
-                let skView = self.view! as SKView
-                skView.ignoresSiblingOrder = true
-                scene.scaleMode = .ResizeFill
-                scene.size = skView.bounds.size
-                let fade: SKTransition = SKTransition.crossFadeWithDuration(0.25)
-                //let slide: SKTransition = SKTransition.flipVerticalWithDuration(0.5)
-                scene.scaleMode = .Fill
-                skView.presentScene(scene, transition: fade)
+                if self.view != nil{
+                    var scene = SKScene()
+                    if gameMode == 0 {
+                        scene =  TimeTrial(size: self.size)
+                    } else if gameMode == 1 {
+                        scene = Infinite(size: self.size)
+                    } else {
+                        scene = MainMenu(size: self.size)
+                    }
+                    let skView = self.view! as SKView
+                    skView.ignoresSiblingOrder = true
+                    scene.scaleMode = .ResizeFill
+                    scene.size = skView.bounds.size
+                    let fade: SKTransition = SKTransition.crossFadeWithDuration(0.5)
+                    //let slide: SKTransition = SKTransition.flipVerticalWithDuration(0.5)
+                    scene.scaleMode = .Fill
+                    skView.presentScene(scene, transition: fade)
+            
+                }
+            }else if name == "mmbutton" {
+                //Bring the user back to the main menu
+                if self.view != nil {
+                    let scene = MainMenu(size: self.size)
+                    let skView = self.view! as SKView
+                    skView.ignoresSiblingOrder = true
+                    scene.scaleMode = .ResizeFill
+                    scene.size = skView.bounds.size
+                    let fade: SKTransition = SKTransition.crossFadeWithDuration(0.5)
+                    scene.scaleMode = .Fill
+                    skView.presentScene(scene, transition: fade)
+                }
             }
+            
         }
 
     }
@@ -132,10 +160,14 @@ class GameOver : SKScene{
         if (GKLocalPlayer.localPlayer().authenticated) {
             let gkScore = GKScore(leaderboardIdentifier: "Dots_infinite")
             gkScore.value = Int64(score)
-            /*
-            do{
-                try GKScore.reportScores([gkScore], withCompletionHandler: )
-            }*/
+            GKScore.reportScores([gkScore], withCompletionHandler: ( { (error: NSError!) -> Void in
+                if (error != nil) {
+                    // handle error
+                    println("Error: " + error.localizedDescription);
+                } else {
+                    println("Score reported: \(gkScore.value)")
+                }
+            }))
         }}
             
     

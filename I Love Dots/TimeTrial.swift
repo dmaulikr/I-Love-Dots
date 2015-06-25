@@ -104,7 +104,7 @@ class TimeTrial : DBasicLevel{
             //Change background to red if the player touches outside the ball
             //self.backgroundColor = SKColor.redColor()
             let scene =  GameOver(size: self.size)
-            scene.setMyScore(0)
+            scene.setMyScore(scoreCount)
             let skView = self.view! as SKView
             skView.ignoresSiblingOrder = true
             scene.scaleMode = .ResizeFill
