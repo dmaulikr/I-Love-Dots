@@ -22,6 +22,8 @@ class GameOver : SKScene{
     var gameMode: Int = 0
     var sizeOfView: CGRect = CGRect()
     let font = "Blackout-Sunrise"       //Change this font to change all the fonts (except the buttons)
+    let restartButton = SKSpriteNode(imageNamed: "restartbutton")
+    let mainMenuButton = SKSpriteNode(imageNamed: "mainmenubutton")
     
     override func didMoveToView(view: SKView) {
         
@@ -72,12 +74,12 @@ class GameOver : SKScene{
         self.addChild(message)
         NSNotificationCenter.defaultCenter().postNotificationName("showiAdBanner", object: nil)
         
-        let restartButton = SKSpriteNode(imageNamed: "restartbutton")
+        
         restartButton.position = CGPointMake(CGRectGetMidX(self.frame), 3*CGRectGetMaxY(self.frame)/8)
         restartButton.name = "rsbutton"
         self.addChild(restartButton)
         
-        let mainMenuButton = SKSpriteNode(imageNamed: "mainmenubutton")
+        
         mainMenuButton.position = CGPointMake(restartButton.position.x, restartButton.position.y - 90)
         mainMenuButton.name = "mmbutton"
         self.addChild(mainMenuButton)
@@ -87,6 +89,26 @@ class GameOver : SKScene{
         let touch:UITouch = touches.first! as! UITouch
         let positionInScene = touch.locationInNode(self)
         let touchedNode = self.nodeAtPoint(positionInScene)
+        
+        if let name = touchedNode.name {
+            //Restarts the game from the current gamemode
+            if name == "rsbutton" || name == "rslabel" {
+                restartButton.texture = SKTexture(imageNamed: "restartbutton-pushed")
+            } else if name == "mmbutton" {
+                mainMenuButton.texture = SKTexture(imageNamed: "mainmenubutton-pushed")
+            }
+            
+        }
+
+    }
+    
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+        let touch:UITouch = touches.first! as! UITouch
+        let positionInScene = touch.locationInNode(self)
+        let touchedNode = self.nodeAtPoint(positionInScene)
+        
+        restartButton.texture = SKTexture(imageNamed: "restartbutton")
+        mainMenuButton.texture = SKTexture(imageNamed: "mainmenubutton")
         
         if let name = touchedNode.name {
             //Restarts the game from the current gamemode
@@ -108,7 +130,7 @@ class GameOver : SKScene{
                     //let slide: SKTransition = SKTransition.flipVerticalWithDuration(0.5)
                     scene.scaleMode = .Fill
                     skView.presentScene(scene, transition: fade)
-            
+                    
                 }
             }else if name == "mmbutton" {
                 //Bring the user back to the main menu
@@ -125,7 +147,6 @@ class GameOver : SKScene{
             }
             
         }
-
     }
     
     func setMyScore(score: Int){

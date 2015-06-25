@@ -19,6 +19,9 @@ class MainMenu: SKScene {
     var sizeOfView: CGRect = CGRect()
     let slideIn = SKTransition.moveInWithDirection(SKTransitionDirection.Right, duration: 1)
     let slideOut = SKTransition.moveInWithDirection(SKTransitionDirection.Left, duration: 1)
+    var gm_startButton = SKSpriteNode(imageNamed: "startbutton")
+    var gc_button = SKSpriteNode(imageNamed: "gamecenter")
+    var gm_selector = SKSpriteNode(imageNamed: "gamemode")
     
     override func didMoveToView(view: SKView) {
         
@@ -33,19 +36,18 @@ class MainMenu: SKScene {
         self.addChild(welcomelabel)
         */
         
-        let gm_startButton = SKSpriteNode(imageNamed: "startbutton")
         gm_startButton.name = "gm_startbutton"
         //gm_startButton.fillColor = SKColor.redColor()
         gm_startButton.position = CGPointMake(CGRectGetMidX(self.frame) - 60, CGRectGetMidY(self.frame))
         self.addChild(gm_startButton)
         
-        let gc_button = SKSpriteNode(imageNamed: "gamecenter")
+        
         gc_button.name = "gc_button"
         gc_button.position = CGPointMake(CGRectGetMidX(self.frame) + 60, CGRectGetMidY(self.frame))
         self.addChild(gc_button)
         
         
-        let gm_selector = SKSpriteNode(imageNamed: "gamemode")
+        
         gm_selector.name = "gm_selector"
         //gm_selector.fillColor = SKColor.greenColor()
         gm_selector.position = CGPointMake(CGRectGetMidX(self.frame), gc_button.position.y - 90)
@@ -74,6 +76,28 @@ class MainMenu: SKScene {
         let positionInScene = touch.locationInNode(self)
         let touchedNode = self.nodeAtPoint(positionInScene)
         
+        if let name = touchedNode.name{
+            if name == "gm_startbutton"{
+                gm_startButton.texture = SKTexture(imageNamed: "startbutton-pushed")
+                //var scene =  TimeTrial(size: self.size)
+            }
+            if name == "gc_button" {
+                gc_button.texture = SKTexture(imageNamed: "gamecenter-pushed")
+            }
+            if name == "gm_selector" {
+                gm_selector.texture = SKTexture(imageNamed: "gamemode-pushed")
+            }
+        }
+        
+    }
+    
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+        let touch:UITouch = touches.first! as! UITouch
+        let positionInScene = touch.locationInNode(self)
+        let touchedNode = self.nodeAtPoint(positionInScene)
+        gm_startButton.texture = SKTexture(imageNamed: "startbutton")
+        gc_button.texture = SKTexture(imageNamed: "gamecenter")
+        gm_selector.texture = SKTexture(imageNamed: "gamemode")
         if let name = touchedNode.name{
             if name == "gm_startbutton"{
                 if thisGameMode == 0 {

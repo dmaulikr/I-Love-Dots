@@ -23,6 +23,7 @@
 		FF4A3A1C1B3B4B7600CBFA13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A3A1B1B3B4B7600CBFA13 /* AppDelegate.swift */; };
 		FF4A3A211B3B4BA300CBFA13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF4A3A1D1B3B4BA300CBFA13 /* Main.storyboard */; };
 		FF4A3A221B3B4BA300CBFA13 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF4A3A1F1B3B4BA300CBFA13 /* LaunchScreen.xib */; };
+		FFB4F42F1B3C817A00B2D6BE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4A3A291B3B4C9F00CBFA13 /* GameKit.framework */; };
 		FFC254451B3B992C001459A2 /* Supporting Files in Resources */ = {isa = PBXBuildFile; fileRef = FFC254441B3B992C001459A2 /* Supporting Files */; };
 		FFC254471B3B99B5001459A2 /* Blackout Sunrise.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFC254461B3B99B5001459A2 /* Blackout Sunrise.ttf */; };
 		FFFC62CB1B3B615B00B3D8CF /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FFFC62CA1B3B615B00B3D8CF /* GameScene.sks */; };
@@ -82,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFB4F42F1B3C817A00B2D6BE /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,7 +243,7 @@
 								enabled = 1;
 							};
 							com.apple.InAppPurchase = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -470,6 +472,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "co.bluetruck.I-Love-Dots";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "a618def0-a885-4494-b07e-32fb4b9a41a6";
 			};
 			name = Debug;
 		};
@@ -482,6 +485,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "co.bluetruck.I-Love-Dots";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "a618def0-a885-4494-b07e-32fb4b9a41a6";
 			};
 			name = Release;
 		};
