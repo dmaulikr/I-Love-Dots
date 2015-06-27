@@ -10,6 +10,7 @@ import Foundation
 import iAd
 import UIKit
 import SpriteKit
+import GameKit
 //import AdColony
 
 class MainMenu: SKScene {
@@ -22,6 +23,7 @@ class MainMenu: SKScene {
     var gm_startButton = SKSpriteNode(imageNamed: "startbutton")
     var gc_button = SKSpriteNode(imageNamed: "gamecenter")
     var gm_selector = SKSpriteNode(imageNamed: "gamemode")
+    let settings = SKSpriteNode(imageNamed: "settingsbutton")
     
     override func didMoveToView(view: SKView) {
         
@@ -53,15 +55,9 @@ class MainMenu: SKScene {
         gm_selector.position = CGPointMake(CGRectGetMidX(self.frame), gc_button.position.y - 90)
         self.addChild(gm_selector)
         
-        /*
-        let startLabel = SKLabelNode(text: "Start!")
-        startLabel.position = CGPointMake(0, 0)
-        startLabel.fontSize = 45
-        startLabel.fontName = "Helvetica-Bold"
-        startLabel.verticalAlignmentMode = SKLabelVerticalAlignmentMode(rawValue: 1)!
-        startLabel.name = "gm_startbutton"
-        gm_startButton.addChild(startLabel)
-        */
+        settings.name = "settings_button"
+        settings.position = CGPointMake(CGRectGetMidX(self.frame), gm_selector.position.y - 90)
+        self.addChild(settings)
         
         if let lastGamemode: AnyObject = userDefaults.valueForKey("last_gamemode") as? Int{
             lastGM = Int(lastGamemode as! NSNumber)
@@ -79,13 +75,15 @@ class MainMenu: SKScene {
         if let name = touchedNode.name{
             if name == "gm_startbutton"{
                 gm_startButton.texture = SKTexture(imageNamed: "startbutton-pushed")
-                //var scene =  TimeTrial(size: self.size)
             }
             if name == "gc_button" {
                 gc_button.texture = SKTexture(imageNamed: "gamecenter-pushed")
             }
             if name == "gm_selector" {
                 gm_selector.texture = SKTexture(imageNamed: "gamemode-pushed")
+            }
+            if name == "settings_button" {
+                settings.texture = SKTexture(imageNamed: "settingsbutton-pushed")
             }
         }
         
@@ -98,6 +96,7 @@ class MainMenu: SKScene {
         gm_startButton.texture = SKTexture(imageNamed: "startbutton")
         gc_button.texture = SKTexture(imageNamed: "gamecenter")
         gm_selector.texture = SKTexture(imageNamed: "gamemode")
+        settings.texture = SKTexture(imageNamed: "settingsbutton")
         if let name = touchedNode.name{
             if name == "gm_startbutton"{
                 if thisGameMode == 0 {
@@ -138,6 +137,17 @@ class MainMenu: SKScene {
                 //NSNotificationCenter.defaultCenter().postNotificationName("hideiAdBanner", object: nil)
                 skView.presentScene(scene, transition: SKTransition.moveInWithDirection(SKTransitionDirection.Right, duration: 0.2))
             }
+            if name == "gc_button" {
+                NSNotificationCenter.defaultCenter().postNotificationName("showLeaderboard", object: nil)
+            }
+            if name == "settings_button" {
+                let scene =  SettingsPane(size: self.size)
+                let skView = self.view! as SKView
+                skView.ignoresSiblingOrder = true
+                scene.scaleMode = .ResizeFill
+                scene.size = skView.bounds.size
+                skView.presentScene(scene, transition: SKTransition.moveInWithDirection(SKTransitionDirection.Right, duration: 0.2))
+            }
         }
         
     }
@@ -149,7 +159,5 @@ class MainMenu: SKScene {
     func sizeOfView(size: CGRect){
         sizeOfView = size
     }
-    
-    
     
 }

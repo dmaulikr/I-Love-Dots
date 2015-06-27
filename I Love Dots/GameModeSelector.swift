@@ -14,8 +14,8 @@ class GameModeSelector : SKScene {
     
     private let userDefaults = NSUserDefaults.standardUserDefaults()
     
-    var timeTrialButton = SKShapeNode()
-    var infiniteButton = SKShapeNode()
+    var timeTrialButton = SKSpriteNode()
+    var infiniteButton = SKSpriteNode()
     var gameCenterLink = SKSpriteNode()
     var backButton = SKLabelNode()
     var currentGM: Int = 0
@@ -28,14 +28,14 @@ class GameModeSelector : SKScene {
         self.backgroundColor = UIColor(red: 0.74, green: 0.5, blue: 1, alpha: 1)
         
         //Add TimeTrial Selector
-        timeTrialButton = SKShapeNode(rect: CGRect(x: CGRectGetMidX(self.frame)/2, y: 3*CGRectGetMaxY(self.frame)/4, width: CGRectGetMidX(self.frame), height: 40))
-        timeTrialButton.fillColor = SKColor.whiteColor()
+        timeTrialButton = SKSpriteNode(imageNamed: "timetrialbutton")
+        timeTrialButton.position = CGPointMake(CGRectGetMidX(self.frame), 3*CGRectGetMaxY(self.frame)/4)
         timeTrialButton.name = "timetrial"
         self.addChild(timeTrialButton)
         
         //Add Infinite Selector
-        infiniteButton = SKShapeNode(rect: CGRect(x: CGRectGetMidX(self.frame)/2, y: 5*CGRectGetMaxY(self.frame)/8, width: CGRectGetMidX(self.frame), height: 40))
-        infiniteButton.fillColor = SKColor.whiteColor()
+        infiniteButton = SKSpriteNode(imageNamed: "infinitebutton")
+        infiniteButton.position = CGPointMake(timeTrialButton.position.x, timeTrialButton.position.y - 90)
         infiniteButton.name = "infinite"
         self.addChild(infiniteButton)
         
@@ -62,6 +62,28 @@ class GameModeSelector : SKScene {
         
         if let name = touchedNode.name {
             if name == "backbutton"{
+                
+            } else if name == "timetrial" {
+                timeTrialButton.texture = SKTexture(imageNamed: "timetrialbutton-pushed")
+                
+            } else if name == "infinite" {
+                infiniteButton.texture = SKTexture(imageNamed: "infinitebutton-pushed")
+            }
+        }
+    }
+    
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+        //Touch variables
+        let touch:UITouch = touches.first! as! UITouch
+        let positionInScene = touch.locationInNode(self)
+        let touchedNode = self.nodeAtPoint(positionInScene)
+        
+        //Set the Textures back to the correct ones.
+        timeTrialButton.texture = SKTexture(imageNamed: "timetrialbutton")
+        infiniteButton.texture = SKTexture(imageNamed: "infinitebutton-pushed")
+        
+        if let name = touchedNode.name {
+            if name == "backbutton"{
                 let scene = MainMenu(size: self.size)
                 scene.setMainGameMode(chosenMode)
                 let skView = self.view! as SKView
@@ -73,7 +95,7 @@ class GameModeSelector : SKScene {
                 
             } else if name == "timetrial" {
                 chosenMode = 0
-                self.backgroundColor = SKColor.greenColor()
+                //self.backgroundColor = SKColor.greenColor()
                 if let last_gm: AnyObject = userDefaults.valueForKey("last_gamemode") {
                     userDefaults.setValue(chosenMode, forKey: "last_gamemode")
                     userDefaults.synchronize() // don't forget this!!!!
@@ -85,7 +107,7 @@ class GameModeSelector : SKScene {
                 
             } else if name == "infinite" {
                 chosenMode = 1
-                self.backgroundColor = SKColor.blueColor()
+                //self.backgroundColor = SKColor.blueColor()
                 if let last_gm: AnyObject = userDefaults.valueForKey("last_gamemode") {
                     userDefaults.setValue(chosenMode, forKey: "last_gamemode")
                     userDefaults.synchronize() // don't forget this!!!!

@@ -96,6 +96,7 @@ class TimeTrial : DBasicLevel{
                 addBall(ballSize)
                 //print(ballSize)
                 audioPlayer.play()
+
                // self.addChild(timeLeftLabel)
                 //self.addChild(score)
             }

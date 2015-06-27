@@ -18,11 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ADBannerViewDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        /*
         let fontFamilies = UIFont.familyNames()
         for familyName in fontFamilies {
             let fontNames = UIFont.fontNamesForFamilyName(familyName as! String)
             println("\(familyName): \(fontNames)")
-        }
+        }*/
         return true
     }
 

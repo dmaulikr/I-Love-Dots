@@ -31,7 +31,7 @@ extension SKNode {
     }
 }
 
-class GameViewController: UIViewController, ADBannerViewDelegate {
+class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterControllerDelegate {
     
     var localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
     
@@ -47,6 +47,7 @@ class GameViewController: UIViewController, ADBannerViewDelegate {
         super.viewDidLoad()
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showiAdBanner", name: "showiAdBanner", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showLeaderboard", name: "showLeaderboard", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "hideiAdBanner", name: "hideiAdBanner", object: nil)
         //NSNotificationCenter.defaultCenter().postNotificationName("showiAdBanner", object: nil)
         if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
@@ -114,6 +115,26 @@ class GameViewController: UIViewController, ADBannerViewDelegate {
     
     func hideiAdBanner() {
         adBannerView.hidden = true
+    }
+    
+    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController!) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func showLeaderboard() {
+        
+        // declare the Game Center viewController
+        var gcViewController: GKGameCenterViewController = GKGameCenterViewController()
+        gcViewController.gameCenterDelegate = self
+        
+        gcViewController.viewState = GKGameCenterViewControllerState.Leaderboards
+        
+        // Remember to replace "Best Score" with your Leaderboard ID (which you have created in iTunes Connect)
+        gcViewController.leaderboardIdentifier = "Dots_infinite"
+        // Finally present the Game Center ViewController
+        self.showViewController(gcViewController, sender: self)
+        self.navigationController?.pushViewController(gcViewController, animated: true)
+        self.presentViewController(gcViewController, animated: true, completion: nil)
     }
 
 

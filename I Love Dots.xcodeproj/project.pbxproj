@@ -23,6 +23,7 @@
 		FF4A3A1C1B3B4B7600CBFA13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A3A1B1B3B4B7600CBFA13 /* AppDelegate.swift */; };
 		FF4A3A211B3B4BA300CBFA13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF4A3A1D1B3B4BA300CBFA13 /* Main.storyboard */; };
 		FF4A3A221B3B4BA300CBFA13 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF4A3A1F1B3B4BA300CBFA13 /* LaunchScreen.xib */; };
+		FF5DEE891B3DD62300FE6C72 /* SettingsPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5DEE881B3DD62300FE6C72 /* SettingsPane.swift */; };
 		FFB4F42F1B3C817A00B2D6BE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4A3A291B3B4C9F00CBFA13 /* GameKit.framework */; };
 		FFC254451B3B992C001459A2 /* Supporting Files in Resources */ = {isa = PBXBuildFile; fileRef = FFC254441B3B992C001459A2 /* Supporting Files */; };
 		FFC254471B3B99B5001459A2 /* Blackout Sunrise.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFC254461B3B99B5001459A2 /* Blackout Sunrise.ttf */; };
@@ -72,6 +73,7 @@
 		FF4A3A251B3B4C1A00CBFA13 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		FF4A3A271B3B4C5C00CBFA13 /* GameplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameplayKit.framework; path = "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/GameplayKit.framework"; sourceTree = "<absolute>"; };
 		FF4A3A291B3B4C9F00CBFA13 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		FF5DEE881B3DD62300FE6C72 /* SettingsPane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPane.swift; sourceTree = "<group>"; };
 		FFC254441B3B992C001459A2 /* Supporting Files */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Supporting Files"; sourceTree = "<group>"; };
 		FFC254461B3B99B5001459A2 /* Blackout Sunrise.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Blackout Sunrise.ttf"; path = "I Love Dots/Supporting Files/Blackout Sunrise.ttf"; sourceTree = "<group>"; };
 		FFFC62CA1B3B615B00B3D8CF /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				FFFC62CA1B3B615B00B3D8CF /* GameScene.sks */,
 				FF4A3A0A1B3B4B3600CBFA13 /* GameScene.swift */,
 				FF4A3A0B1B3B4B3600CBFA13 /* GameViewController.swift */,
+				FF5DEE881B3DD62300FE6C72 /* SettingsPane.swift */,
 				FF4A3A0C1B3B4B3600CBFA13 /* Infinite.swift */,
 				FF4A3A0D1B3B4B3600CBFA13 /* LoadingScreen.swift */,
 				FF4A3A0E1B3B4B3600CBFA13 /* MainMenu.swift */,
@@ -322,6 +325,7 @@
 				FF4A3A161B3B4B3600CBFA13 /* LoadingScreen.swift in Sources */,
 				FF4A3A181B3B4B3600CBFA13 /* TimeTrial.swift in Sources */,
 				FF4A3A141B3B4B3600CBFA13 /* GameViewController.swift in Sources */,
+				FF5DEE891B3DD62300FE6C72 /* SettingsPane.swift in Sources */,
 				FF4A3A1C1B3B4B7600CBFA13 /* AppDelegate.swift in Sources */,
 				FF4A3A121B3B4B3600CBFA13 /* GameOver.swift in Sources */,
 			);
