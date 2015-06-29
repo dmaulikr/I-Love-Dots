@@ -80,7 +80,7 @@ class GameModeSelector : SKScene {
         
         //Set the Textures back to the correct ones.
         timeTrialButton.texture = SKTexture(imageNamed: "timetrialbutton")
-        infiniteButton.texture = SKTexture(imageNamed: "infinitebutton-pushed")
+        infiniteButton.texture = SKTexture(imageNamed: "infinitebutton")
         
         if let name = touchedNode.name {
             if name == "backbutton"{

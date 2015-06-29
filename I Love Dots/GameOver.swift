@@ -11,7 +11,6 @@ import SpriteKit
 import GameKit
 
 class GameOver : SKScene{
-    //private let scoreBox: SKShapeNode = SKShapeNode(rect: CGRect(x: 0, y: 0, width: 100, height: 100))
     private let restartLabel: SKLabelNode = SKLabelNode()
     private let thisScore: SKLabelNode = SKLabelNode()
     private let highScore: SKLabelNode = SKLabelNode()
@@ -21,7 +20,7 @@ class GameOver : SKScene{
     private let message = SKLabelNode()
     var gameMode: Int = 0
     var sizeOfView: CGRect = CGRect()
-    let font = "Blackout-Sunrise"       //Change this font to change all the fonts (except the buttons)
+    let font = "ArmagedaWide"       //Change this font to change all the fonts (except the buttons)
     let restartButton = SKSpriteNode(imageNamed: "restartbutton")
     let mainMenuButton = SKSpriteNode(imageNamed: "mainmenubutton")
     
@@ -31,27 +30,8 @@ class GameOver : SKScene{
         
         //Background Color
         self.backgroundColor = UIColor(red: 0.94, green: 1.0, blue: 1.0, alpha: 1.0)
-        /*
-        //Change the button color based on score
-        if(score <= 0){
-            scoreBox.fillColor = SKColor.redColor()
-        }
-        else if(score < 6){
-            scoreBox.fillColor = SKColor.yellowColor()
-            restartLabel.fontColor = SKColor.blackColor()
-        }
-        else if(score >= 6 && score < 25){
-            scoreBox.fillColor = SKColor.orangeColor()
-            restartLabel.fontColor = SKColor.whiteColor()
-        }
-        else if(score >= 25){
-            scoreBox.fillColor = SKColor.greenColor()
-            restartLabel.fontColor = SKColor.blackColor()
-        }
-        scoreBox.position = CGPointMake(CGRectGetMidX(self.frame) - 50, CGRectGetMidY(self.frame) - 50)
-        //restartButton.name = "rsbutton"
-        self.addChild(scoreBox)
-        */
+        
+        //Restart Label (You lost! etc.)
         restartLabel.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame)/2)
         restartLabel.fontName = font
         restartLabel.text = String(score)
@@ -74,12 +54,12 @@ class GameOver : SKScene{
         self.addChild(message)
         NSNotificationCenter.defaultCenter().postNotificationName("showiAdBanner", object: nil)
         
-        
+        //Restart Button Attributes
         restartButton.position = CGPointMake(CGRectGetMidX(self.frame), 3*CGRectGetMaxY(self.frame)/8)
         restartButton.name = "rsbutton"
         self.addChild(restartButton)
         
-        
+        //Main Menu Button Attributes
         mainMenuButton.position = CGPointMake(restartButton.position.x, restartButton.position.y - 90)
         mainMenuButton.name = "mmbutton"
         self.addChild(mainMenuButton)
@@ -101,7 +81,8 @@ class GameOver : SKScene{
         }
 
     }
-    
+
+    //We use touchesEnded to make a more natural-feeling button press.
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         let touch:UITouch = touches.first! as! UITouch
         let positionInScene = touch.locationInNode(self)

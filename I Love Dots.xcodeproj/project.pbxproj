@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF4885B91B41E94800076C2B /* Armageda Wide.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF4885B81B41E94800076C2B /* Armageda Wide.ttf */; };
 		FF4A39EB1B3B4A0C00CBFA13 /* I_Love_DotsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A39EA1B3B4A0C00CBFA13 /* I_Love_DotsTests.swift */; };
 		FF4A39F61B3B4A0D00CBFA13 /* I_Love_DotsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A39F51B3B4A0D00CBFA13 /* I_Love_DotsUITests.swift */; };
 		FF4A3A041B3B4B0600CBFA13 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF4A3A031B3B4B0600CBFA13 /* Images.xcassets */; };
@@ -27,6 +28,7 @@
 		FFB4F42F1B3C817A00B2D6BE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4A3A291B3B4C9F00CBFA13 /* GameKit.framework */; };
 		FFC254451B3B992C001459A2 /* Supporting Files in Resources */ = {isa = PBXBuildFile; fileRef = FFC254441B3B992C001459A2 /* Supporting Files */; };
 		FFC254471B3B99B5001459A2 /* Blackout Sunrise.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFC254461B3B99B5001459A2 /* Blackout Sunrise.ttf */; };
+		FFD4C0381B41B0F100D9E1BD /* DancingDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4C0371B41B0F100D9E1BD /* DancingDot.swift */; };
 		FFFC62CB1B3B615B00B3D8CF /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FFFC62CA1B3B615B00B3D8CF /* GameScene.sks */; };
 		FFFC62CD1B3B620B00B3D8CF /* blop.wav in Resources */ = {isa = PBXBuildFile; fileRef = FFFC62CC1B3B620B00B3D8CF /* blop.wav */; };
 /* End PBXBuildFile section */
@@ -49,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF4885B61B41E82000076C2B /* Armageda Wide.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Armageda Wide.ttf"; sourceTree = "<group>"; };
+		FF4885B81B41E94800076C2B /* Armageda Wide.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Armageda Wide.ttf"; path = "I Love Dots/Supporting Files/Armageda Wide.ttf"; sourceTree = "<group>"; };
 		FF4A39CE1B3B4A0C00CBFA13 /* I Love Dots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "I Love Dots.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF4A39E61B3B4A0C00CBFA13 /* I Love DotsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "I Love DotsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF4A39EA1B3B4A0C00CBFA13 /* I_Love_DotsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_Love_DotsTests.swift; sourceTree = "<group>"; };
@@ -76,6 +80,7 @@
 		FF5DEE881B3DD62300FE6C72 /* SettingsPane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPane.swift; sourceTree = "<group>"; };
 		FFC254441B3B992C001459A2 /* Supporting Files */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Supporting Files"; sourceTree = "<group>"; };
 		FFC254461B3B99B5001459A2 /* Blackout Sunrise.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Blackout Sunrise.ttf"; path = "I Love Dots/Supporting Files/Blackout Sunrise.ttf"; sourceTree = "<group>"; };
+		FFD4C0371B41B0F100D9E1BD /* DancingDot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DancingDot.swift; sourceTree = "<group>"; };
 		FFFC62CA1B3B615B00B3D8CF /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		FFFC62CC1B3B620B00B3D8CF /* blop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = blop.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,7 +114,9 @@
 		FF4A39C51B3B4A0C00CBFA13 = {
 			isa = PBXGroup;
 			children = (
+				FF4885B81B41E94800076C2B /* Armageda Wide.ttf */,
 				FFC254461B3B99B5001459A2 /* Blackout Sunrise.ttf */,
+				FF4885B61B41E82000076C2B /* Armageda Wide.ttf */,
 				FF4A3A291B3B4C9F00CBFA13 /* GameKit.framework */,
 				FF4A3A271B3B4C5C00CBFA13 /* GameplayKit.framework */,
 				FF4A3A251B3B4C1A00CBFA13 /* StoreKit.framework */,
@@ -144,6 +151,7 @@
 				FF4A3A0C1B3B4B3600CBFA13 /* Infinite.swift */,
 				FF4A3A0D1B3B4B3600CBFA13 /* LoadingScreen.swift */,
 				FF4A3A0E1B3B4B3600CBFA13 /* MainMenu.swift */,
+				FFD4C0371B41B0F100D9E1BD /* DancingDot.swift */,
 				FF4A3A0F1B3B4B3600CBFA13 /* TimeTrial.swift */,
 				FFC254441B3B992C001459A2 /* Supporting Files */,
 				FF4A3A1D1B3B4BA300CBFA13 /* Main.storyboard */,
@@ -285,6 +293,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF4885B91B41E94800076C2B /* Armageda Wide.ttf in Resources */,
 				FFC254471B3B99B5001459A2 /* Blackout Sunrise.ttf in Resources */,
 				FFC254451B3B992C001459A2 /* Supporting Files in Resources */,
 				FF4A3A221B3B4BA300CBFA13 /* LaunchScreen.xib in Resources */,
@@ -327,6 +336,7 @@
 				FF4A3A141B3B4B3600CBFA13 /* GameViewController.swift in Sources */,
 				FF5DEE891B3DD62300FE6C72 /* SettingsPane.swift in Sources */,
 				FF4A3A1C1B3B4B7600CBFA13 /* AppDelegate.swift in Sources */,
+				FFD4C0381B41B0F100D9E1BD /* DancingDot.swift in Sources */,
 				FF4A3A121B3B4B3600CBFA13 /* GameOver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

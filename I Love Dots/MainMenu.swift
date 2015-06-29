@@ -11,6 +11,7 @@ import iAd
 import UIKit
 import SpriteKit
 import GameKit
+import Darwin
 //import AdColony
 
 class MainMenu: SKScene {
@@ -24,8 +25,30 @@ class MainMenu: SKScene {
     var gc_button = SKSpriteNode(imageNamed: "gamecenter")
     var gm_selector = SKSpriteNode(imageNamed: "gamemode")
     let settings = SKSpriteNode(imageNamed: "settingsbutton")
+    //let backgroundBlue = SKSpriteNode(imageNamed: "background-blue")
+    let bouncingBall = SKShapeNode(circleOfRadius: 40)
+    let leftBall = SKShapeNode(circleOfRadius: 40)
+    let rightBall = SKShapeNode(circleOfRadius: 40)
+    var theta: Double = 0.0
     
     override func didMoveToView(view: SKView) {
+        
+        //backgroundBlue.position = CGPointMake(CGRectGetMaxX(self.frame) + 512, CGRectGetMidY(self.frame) - 90)
+        //backgroundBlue.xScale = 1
+        //self.addChild(backgroundBlue)
+        bouncingBall.position = CGPointMake(CGRectGetMidX(self.frame), 3*CGRectGetMaxY(self.frame)/8)
+        bouncingBall.fillColor = SKColor(red: 0, green: 0.749, blue: 1.0, alpha: 1)
+        self.addChild(bouncingBall)
+        
+        leftBall.position = CGPointMake(CGRectGetMidX(self.frame) - 50, 3*CGRectGetMaxY(self.frame)/8)
+        leftBall.fillColor = SKColor(red: 0, green: 0, blue: 1.0, alpha: 1)
+        leftBall.strokeColor = leftBall.fillColor
+        self.addChild(leftBall)
+        
+        rightBall.position = CGPointMake(CGRectGetMidX(self.frame) + 50, 3*CGRectGetMaxY(self.frame)/8)
+        rightBall.fillColor = leftBall.fillColor
+        rightBall.strokeColor = rightBall.fillColor
+        self.addChild(rightBall)
         
         print(CGRectGetMidY(self.frame), appendNewline: false)
         
@@ -38,18 +61,24 @@ class MainMenu: SKScene {
         self.addChild(welcomelabel)
         */
         
+        
+        let dots_logo = SKSpriteNode(imageNamed: "Loading")
+        dots_logo.position = CGPointMake(CGRectGetMidX(self.frame), 3*CGRectGetMaxY(self.frame)/4)
+        dots_logo.size = CGSize(width: 3*CGRectGetMaxX(self.frame)/4, height: 3*CGRectGetMaxX(self.frame)/4)
+        self.addChild(dots_logo)
+        
         gm_startButton.name = "gm_startbutton"
         //gm_startButton.fillColor = SKColor.redColor()
-        gm_startButton.position = CGPointMake(CGRectGetMidX(self.frame) - 60, CGRectGetMidY(self.frame))
+        gm_startButton.position = CGPointMake(CGRectGetMidX(self.frame) - 60, CGRectGetMidY(self.frame)-180)
         self.addChild(gm_startButton)
         
         
         gc_button.name = "gc_button"
-        gc_button.position = CGPointMake(CGRectGetMidX(self.frame) + 60, CGRectGetMidY(self.frame))
+        gc_button.position = CGPointMake(CGRectGetMidX(self.frame) + 60, CGRectGetMidY(self.frame)-180)
         self.addChild(gc_button)
         
         
-        
+        /*
         gm_selector.name = "gm_selector"
         //gm_selector.fillColor = SKColor.greenColor()
         gm_selector.position = CGPointMake(CGRectGetMidX(self.frame), gc_button.position.y - 90)
@@ -58,7 +87,7 @@ class MainMenu: SKScene {
         settings.name = "settings_button"
         settings.position = CGPointMake(CGRectGetMidX(self.frame), gm_selector.position.y - 90)
         self.addChild(settings)
-        
+        */
         if let lastGamemode: AnyObject = userDefaults.valueForKey("last_gamemode") as? Int{
             lastGM = Int(lastGamemode as! NSNumber)
         }
@@ -150,6 +179,25 @@ class MainMenu: SKScene {
             }
         }
         
+    }
+    
+    override func update(currentTime: NSTimeInterval) {
+        
+        let pi = M_PI
+        
+        if theta > 2*pi {
+            theta = 0.0
+        }
+        
+        leftBall.xScale = CGFloat(cos(theta + pi/2))
+        rightBall.xScale = CGFloat(cos(theta + pi/2))
+        leftBall.yScale = CGFloat(cos(theta + pi/2))
+        rightBall.yScale = CGFloat(cos(theta + pi/2))
+        
+        bouncingBall.xScale = CGFloat(cos(theta))
+        bouncingBall.yScale = CGFloat(cos(theta))
+        theta += 0.01
+
     }
     
     func setMainGameMode(gamemode: Int){

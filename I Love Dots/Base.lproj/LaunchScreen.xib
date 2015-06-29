@@ -10,16 +10,16 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Loading" translatesAutoresizingMaskIntoConstraints="NO" id="bNN-8z-tyg">
-                    <rect key="frame" x="207" y="200" width="67" height="80"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Loading" translatesAutoresizingMaskIntoConstraints="NO" id="GPs-7Z-iGX">
+                    <rect key="frame" x="172" y="171" width="137" height="137"/>
                     <animations/>
                 </imageView>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="bNN-8z-tyg" secondAttribute="centerX" constant="-0.5" id="66b-IP-7E8"/>
-                <constraint firstAttribute="centerY" secondItem="bNN-8z-tyg" secondAttribute="centerY" id="tqG-Mp-JYz"/>
+                <constraint firstAttribute="centerX" secondItem="GPs-7Z-iGX" secondAttribute="centerX" constant="-0.5" id="1Yp-Jh-xnk"/>
+                <constraint firstAttribute="centerY" secondItem="GPs-7Z-iGX" secondAttribute="centerY" constant="0.5" id="9Qg-lA-HPt"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -27,6 +27,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Loading" width="60" height="60"/>
+        <image name="Loading" width="112" height="123"/>
     </resources>
 </document>

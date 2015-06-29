@@ -11,11 +11,11 @@ import SpriteKit
 
 class LoadingScreen : SKScene{
     override func didMoveToView(view: SKView) {
-        let loadLabel = SKLabelNode()
+        let loadLabel = SKSpriteNode(imageNamed: "Loading")
         loadLabel.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
-        loadLabel.text = "Loading..."
-        loadLabel.fontColor = SKColor.blackColor()
-        loadLabel.fontSize = 40
+        //loadLabel.text = "Loading..."
+        //loadLabel.fontColor = SKColor.blackColor()
+        //loadLabel.fontSize = 40
         self.addChild(loadLabel)
     }
 }

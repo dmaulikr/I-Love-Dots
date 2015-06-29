@@ -18,10 +18,10 @@ class GameScene: SKScene {
         
         //TODO: Make "Dots!" Logo
         
-        let loadingLabel = SKLabelNode(text: "Dots!")
+        let loadingLabel = SKSpriteNode(imageNamed: "Loading")
         loadingLabel.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
-        loadingLabel.fontColor = SKColor.blackColor()
-        loadingLabel.fontSize = 60
+        //loadingLabel.fontColor = SKColor.blackColor()
+        //loadingLabel.fontSize = 60
         loadingLabel.alpha = 0
         self.addChild(loadingLabel)
         let fadeIn = SKAction.fadeInWithDuration(1)
