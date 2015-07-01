@@ -10,6 +10,7 @@ import UIKit
 import SpriteKit
 import iAd
 import GameKit
+import GoogleMobileAds
 
 //TODO: Make "press button" clickable
 //TODO: Fix Crashes if the player touches off the ball
@@ -34,21 +35,31 @@ extension SKNode {
 class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterControllerDelegate {
     
     var localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
-    
+    var interstitial: GADInterstitial!
     
     //var bannerAd:ADBannerView = ADBannerView()
     var adBannerView: ADBannerView = ADBannerView()
 
     override func viewDidLoad() {
         
+        interstitial = AMCreateAd()
+        
         localPlayer.authenticateHandler = {(ViewController, error) -> Void in if((ViewController) != nil) { self.presentViewController(ViewController!, animated: true, completion: nil) } }
         
         loadAds()
         super.viewDidLoad()
 
+        
+        //Setup Notification Center Listeners
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showiAdBanner", name: "showiAdBanner", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showLeaderboard", name: "showLeaderboard", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "hideiAdBanner", name: "hideiAdBanner", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "AMCreateAd", name: "AMCreateAd", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "AMShowAds", name: "AMShowAds", object: nil)
+
+        
+        
+        
         //NSNotificationCenter.defaultCenter().postNotificationName("showiAdBanner", object: nil)
         if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
             // Configure the view.
@@ -136,6 +147,24 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
         self.navigationController?.pushViewController(gcViewController, animated: true)
         self.presentViewController(gcViewController, animated: true, completion: nil)
     }
+    
+    func AMCreateAd() -> GADInterstitial {
+        var ad = GADInterstitial(adUnitID: "ca-app-pub-1206890352094684/4884623048")
+        var request = GADRequest()
+        
+        request.testDevices = ["74c2d2e1ae6dd8683b0a5ce977872e80"]
+        ad.loadRequest(request)
+        
+        return ad
+    }
+    
+    func AMShowAds() {
+        if self.interstitial.isReady {
+            self.interstitial.presentFromRootViewController(self)
+            self.interstitial = AMCreateAd()
+        }
+    }
+    
 
 
 }

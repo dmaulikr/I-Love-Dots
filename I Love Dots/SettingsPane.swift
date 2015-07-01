@@ -13,27 +13,73 @@ class SettingsPane: SKScene {
     
     
     let muteButton = SKLabelNode()
+    let backButton = SKLabelNode(text: "Back")
+    let adlessButton = SKLabelNode(text: "Go Adless")
+    let rateButton = SKLabelNode(text: "Rate!")
+    let moreGames = SKLabelNode(text: "More")
     
-    private let userDefaults = NSUserDefaults.standardUserDefaults()
+    private let userDefaults = DotsCommon.userDefaults
     
     override func didMoveToView(view: SKView) {
         //TODO: Add the Buttons and shit
         
-        let implementMessage = SKLabelNode(text: "Not Yet Implemented")
-        implementMessage.color = SKColor.whiteColor()
-        implementMessage.name = "imp_message"
-        implementMessage.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) + 60)
-        self.addChild(implementMessage)
-        
-        let backButton = SKLabelNode(text: "Back")
-        backButton.color = SKColor.whiteColor()
+        backButton.fontColor = SKColor.whiteColor()
+        backButton.fontName = DotsCommon.font
         backButton.name = "back"
-        backButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
+        backButton.fontSize = 30
+        backButton.position = CGPointMake(CGRectGetMinX(self.frame) + 35, CGRectGetMaxY(self.frame) - 30)
         self.addChild(backButton)
+        
+        muteButton.fontColor = SKColor.whiteColor()
+        if DotsCommon.userDefaults.boolForKey("mutestatus") as Bool? == false {
+            muteButton.text = "Mute"
+        } else {
+            muteButton.text = "Unmute"
+        }
+        muteButton.name = "mute"
+        muteButton.fontName = DotsCommon.font
+        muteButton.fontSize = 30
+        muteButton.position = CGPointMake(CGRectGetMidX(self.frame), 3*CGRectGetMaxY(self.frame)/4)
+        self.addChild(muteButton)
+        
+        adlessButton.position = CGPointMake(muteButton.position.x, muteButton.position.y - 60)
+        adlessButton.fontSize = 30
+        adlessButton.fontName = DotsCommon.font
+        adlessButton.name = "adless"
+        self.addChild(adlessButton)
+        
+        rateButton.position = CGPointMake(adlessButton.position.x, adlessButton.position.y - 60)
+        rateButton.fontSize = 30
+        rateButton.fontName = DotsCommon.font
+        rateButton.name = "rate"
+        self.addChild(rateButton)
+        
+        moreGames.position = CGPointMake(rateButton.position.x, rateButton.position.y - 60)
+        moreGames.fontSize = 30
+        moreGames.fontName = DotsCommon.font
+        moreGames.name = "more"
+        self.addChild(moreGames)
+        
+        
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        //Touch variables
+        let touch:UITouch = touches.first! as! UITouch
+        let positionInScene = touch.locationInNode(self)
+        let touchedNode = self.nodeAtPoint(positionInScene)
         
+        if let name = touchedNode.name {
+            if name == "back" {
+                backButton.alpha = 0.7
+            } else if name == "mute" {
+                muteButton.alpha = 0.7
+            } else if name == "rate" {
+                rateButton.alpha = 0.7
+            } else if name == "more" {
+                moreGames.alpha = 0.7
+            }
+        }
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -41,6 +87,11 @@ class SettingsPane: SKScene {
         let touch:UITouch = touches.first! as! UITouch
         let positionInScene = touch.locationInNode(self)
         let touchedNode = self.nodeAtPoint(positionInScene)
+        
+        backButton.alpha = 1.0
+        muteButton.alpha = 1.0
+        moreGames.alpha = 1.0
+        rateButton.alpha = 1.0
         
         if let name = touchedNode.name {
             if name == "back" {
@@ -53,16 +104,30 @@ class SettingsPane: SKScene {
                 //let slide: SKTransition = SKTransition.flipVerticalWithDuration(0.5)
                 scene.scaleMode = .Fill
                 skView.presentScene(scene, transition: fade)
+            } else if name == "mute" {
+                if userDefaults.boolForKey("mutestatus") as Bool? == false {
+                    muteSound()
+                    muteButton.text = "Unmute"
+                } else if userDefaults.boolForKey("mutestatus") as Bool? == true {
+                    unmuteSound()
+                    muteButton.text = "Mute"
+                }
+            } else if name == "rate" {
+                //let iTunesLink = "itms://itunes.apple.com/us/app/polarr-photo-editor/id988173374?mt=8"
+                //UIApplication.sharedApplication().openURL(NSURL(string: iTunesLink)!)
             }
         }
     }
     
     func muteSound(){
+        userDefaults.setBool(true, forKey: "mutestatus")
+        println("muted!")
 
     }
     
     func unmuteSound(){
-
+        userDefaults.setBool(false, forKey: "mutestatus")
+        println("unmuted!")
     }
     
     func goAdless(){

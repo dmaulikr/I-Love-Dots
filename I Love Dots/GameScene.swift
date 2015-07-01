@@ -30,6 +30,8 @@ class GameScene: SKScene {
         let sequence = SKAction.sequence([fadeIn, wait, fadeOut])
         loadingLabel.runAction(sequence)
         
+        DotsCommon.getMuteStatus()
+        
         //TODO: Add Loading Animation (After I have the logo)
     }
     

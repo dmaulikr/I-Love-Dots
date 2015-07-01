@@ -22,6 +22,7 @@ class TimeTrial : DBasicLevel{
     override func didMoveToView(view: SKView) {
         NSNotificationCenter.defaultCenter().postNotificationName("hideiAdBanner", object: nil)
         ballSize = Int(CGRectGetMaxX(self.frame)/4)
+        
         //Setup Audio Files/Player
         audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("blop", ofType: "wav")!), error: nil)
         audioPlayer.prepareToPlay()
@@ -31,22 +32,7 @@ class TimeTrial : DBasicLevel{
         //Color the Background
         self.backgroundColor = UIColor(red: 0.94, green: 1.0, blue: 1.0, alpha: 1.0)
         
-        //Add preset colors to an array of colors (Predefine them, "pseudorandom")
-        Colors.append(SKColor.redColor())
-        Colors.append(SKColor.greenColor())
-        Colors.append(SKColor.blueColor())
-        Colors.append(SKColor.blackColor())
-        Colors.append(SKColor.purpleColor())
-        Colors.append(SKColor.yellowColor())
-        Colors.append(SKColor.orangeColor())
-        //Colors.append(SKColor(red: 255, green: 153, blue: 204, alpha: 1))
-        
-        //Get length of array of colors and find a random start index
-        colorIndex = UInt32(Colors.count)
-        startingColor = arc4random_uniform(colorIndex)
-        print(startingColor)
-        
-        //Add the first ball to the scene, uses SKShapeNode, r=75, color is "random")
+        //Add the first ball to the scene, uses SKShapeNode, r= 1/4 of the screen size)
         addBall(ballSize)
         
         //Add the welcome message: "Press the Ball"
@@ -62,17 +48,14 @@ class TimeTrial : DBasicLevel{
         score.fontSize = 150
         score.fontName = "Avenir Next"
         score.fontColor = SKColor.blackColor()
-       // gameTimer = NSTimer.scheduledTimerWithTimeInterval(TIME_INCREMENT, target:self, selector: Selector("endGame"), userInfo: nil, repeats: false)
+        
+        //Timer visible to User
         timeLeftLabel.position = CGPointMake(self.score.position.x, self.score.position.y - 40)
         timeLeftLabel.fontColor = SKColor.blackColor()
         timeLeftLabel.fontSize = 30
         timeLeftLabel.name = "timer"
         timeLeftLabel.userInteractionEnabled = false
-        
 
-        
-
-        
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -95,7 +78,9 @@ class TimeTrial : DBasicLevel{
                 scoreCount++
                 addBall(ballSize)
                 //print(ballSize)
-                audioPlayer.play()
+                if DotsCommon.userDefaults.boolForKey("mutestatus") as Bool? == false {
+                    audioPlayer.play()
+                }
 
                // self.addChild(timeLeftLabel)
                 //self.addChild(score)

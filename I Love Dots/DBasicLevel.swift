@@ -16,7 +16,7 @@ class DBasicLevel : SKScene{
     var timer = SKLabelNode()
     var scoreCount: Int = 0
     var Colors = [SKColor]()
-    var colorIndex: UInt32 = 0
+    var colorIndex = 0
     var startingColor: UInt32 = 0
     var viewMidX: Int = 0
     var viewMidY: Int = 0
@@ -51,11 +51,6 @@ class DBasicLevel : SKScene{
         Colors.append(SKColor.yellowColor())
         Colors.append(SKColor.orangeColor())
         //Colors.append(SKColor(red: 255, green: 153, blue: 204, alpha: 1))
-        
-        //Get length of array of colors and find a random start index
-        colorIndex = UInt32(Colors.count)
-        startingColor = arc4random_uniform(colorIndex)
-        print(startingColor)
         
         //Add the first ball to the scene, uses SKShapeNode, r=75, color is "random")
         addBall(ballSize)
@@ -168,12 +163,17 @@ class DBasicLevel : SKScene{
     }
     
     func pickColor() -> SKColor{
+        /*
         var temp = colorIndex
         let newColor: SKColor = Colors[Int(arc4random_uniform(UInt32(colorIndex)))]
         colorIndex++
         if(Int(colorIndex) > Colors.count){
             colorIndex = 0
         }
+        return newColor*/
+        
+        var newColor = DotsCommon.getColor(colorIndex)
+        colorIndex++
         return newColor
     }
     

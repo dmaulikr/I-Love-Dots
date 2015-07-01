@@ -16,39 +16,47 @@ import Darwin
 
 class MainMenu: SKScene {
     var thisGameMode: Int = Int()
-    private let userDefaults = NSUserDefaults.standardUserDefaults()
+    private let userDefaults = DotsCommon.userDefaults
     var lastGM: Int = 0
     var sizeOfView: CGRect = CGRect()
     let slideIn = SKTransition.moveInWithDirection(SKTransitionDirection.Right, duration: 1)
     let slideOut = SKTransition.moveInWithDirection(SKTransitionDirection.Left, duration: 1)
     var gm_startButton = SKSpriteNode(imageNamed: "startbutton")
-    var gc_button = SKSpriteNode(imageNamed: "gamecenter")
+    var gc_button = SKSpriteNode(imageNamed: "gamecenter-disabled")
     var gm_selector = SKSpriteNode(imageNamed: "gamemode")
     let settings = SKSpriteNode(imageNamed: "settingsbutton")
-    //let backgroundBlue = SKSpriteNode(imageNamed: "background-blue")
     let bouncingBall = SKShapeNode(circleOfRadius: 40)
     let leftBall = SKShapeNode(circleOfRadius: 40)
     let rightBall = SKShapeNode(circleOfRadius: 40)
     var theta: Double = 0.0
+    var colorPicker = 0
+    let gear = SKSpriteNode(imageNamed: "gear")
     
     override func didMoveToView(view: SKView) {
         
-        //backgroundBlue.position = CGPointMake(CGRectGetMaxX(self.frame) + 512, CGRectGetMidY(self.frame) - 90)
-        //backgroundBlue.xScale = 1
-        //self.addChild(backgroundBlue)
+        //Add the three pulsating dots
+        //1
         bouncingBall.position = CGPointMake(CGRectGetMidX(self.frame), 3*CGRectGetMaxY(self.frame)/8)
         bouncingBall.fillColor = SKColor(red: 0, green: 0.749, blue: 1.0, alpha: 1)
+        bouncingBall.name = "middleball"
         self.addChild(bouncingBall)
         
+        //2
         leftBall.position = CGPointMake(CGRectGetMidX(self.frame) - 50, 3*CGRectGetMaxY(self.frame)/8)
         leftBall.fillColor = SKColor(red: 0, green: 0, blue: 1.0, alpha: 1)
         leftBall.strokeColor = leftBall.fillColor
+        leftBall.name = "leftball"
         self.addChild(leftBall)
         
+        //3
         rightBall.position = CGPointMake(CGRectGetMidX(self.frame) + 50, 3*CGRectGetMaxY(self.frame)/8)
         rightBall.fillColor = leftBall.fillColor
         rightBall.strokeColor = rightBall.fillColor
+        rightBall.name = "rightball"
         self.addChild(rightBall)
+        
+        
+        
         
         print(CGRectGetMidY(self.frame), appendNewline: false)
         
@@ -65,6 +73,7 @@ class MainMenu: SKScene {
         let dots_logo = SKSpriteNode(imageNamed: "Loading")
         dots_logo.position = CGPointMake(CGRectGetMidX(self.frame), 3*CGRectGetMaxY(self.frame)/4)
         dots_logo.size = CGSize(width: 3*CGRectGetMaxX(self.frame)/4, height: 3*CGRectGetMaxX(self.frame)/4)
+        dots_logo.name = "dots_logo"
         self.addChild(dots_logo)
         
         gm_startButton.name = "gm_startbutton"
@@ -77,23 +86,17 @@ class MainMenu: SKScene {
         gc_button.position = CGPointMake(CGRectGetMidX(self.frame) + 60, CGRectGetMidY(self.frame)-180)
         self.addChild(gc_button)
         
+        gear.size = CGSize(width: 35, height: 35)
+        gear.position = CGPointMake(CGRectGetMaxX(self.frame) - 20, CGRectGetMaxY(self.frame)-20)
+        gear.name = "gear"
+        self.addChild(gear)
         
-        /*
-        gm_selector.name = "gm_selector"
-        //gm_selector.fillColor = SKColor.greenColor()
-        gm_selector.position = CGPointMake(CGRectGetMidX(self.frame), gc_button.position.y - 90)
-        self.addChild(gm_selector)
-        
-        settings.name = "settings_button"
-        settings.position = CGPointMake(CGRectGetMidX(self.frame), gm_selector.position.y - 90)
-        self.addChild(settings)
-        */
         if let lastGamemode: AnyObject = userDefaults.valueForKey("last_gamemode") as? Int{
             lastGM = Int(lastGamemode as! NSNumber)
         }
         thisGameMode = lastGM
         
-        NSNotificationCenter.defaultCenter().postNotificationName("showiAdBanner", object: nil)
+        DotsCommon.showAds()
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -106,13 +109,20 @@ class MainMenu: SKScene {
                 gm_startButton.texture = SKTexture(imageNamed: "startbutton-pushed")
             }
             if name == "gc_button" {
-                gc_button.texture = SKTexture(imageNamed: "gamecenter-pushed")
+                //gc_button.texture = SKTexture(imageNamed: "gamecenter-pushed")
             }
             if name == "gm_selector" {
                 gm_selector.texture = SKTexture(imageNamed: "gamemode-pushed")
             }
             if name == "settings_button" {
                 settings.texture = SKTexture(imageNamed: "settingsbutton-pushed")
+            }
+            if name == "middleball" || name == "leftball" || name == "rightball" {
+                (touchedNode as! SKShapeNode).fillColor = DotsCommon.getColor(colorPicker)
+                colorPicker++
+            }
+            if name == "dots_logo" {
+                (touchedNode as SKNode).runAction(DotsCommon.wiggle())
             }
         }
         
@@ -123,7 +133,7 @@ class MainMenu: SKScene {
         let positionInScene = touch.locationInNode(self)
         let touchedNode = self.nodeAtPoint(positionInScene)
         gm_startButton.texture = SKTexture(imageNamed: "startbutton")
-        gc_button.texture = SKTexture(imageNamed: "gamecenter")
+        //gc_button.texture = SKTexture(imageNamed: "gamecenter")
         gm_selector.texture = SKTexture(imageNamed: "gamemode")
         settings.texture = SKTexture(imageNamed: "settingsbutton")
         if let name = touchedNode.name{
@@ -134,7 +144,7 @@ class MainMenu: SKScene {
                     skView.ignoresSiblingOrder = true
                     scene.scaleMode = .ResizeFill
                     scene.size = skView.bounds.size
-                    NSNotificationCenter.defaultCenter().postNotificationName("hideiAdBanner", object: nil)
+                    DotsCommon.hideAds()
                     skView.presentScene(scene, transition: SKTransition.crossFadeWithDuration(0.5))
                     
                 } else if thisGameMode == 1 {
@@ -143,7 +153,7 @@ class MainMenu: SKScene {
                     skView.ignoresSiblingOrder = true
                     scene.scaleMode = .ResizeFill
                     scene.size = skView.bounds.size
-                    NSNotificationCenter.defaultCenter().postNotificationName("hideiAdBanner", object: nil)
+                    DotsCommon.hideAds()
                     skView.presentScene(scene, transition: SKTransition.crossFadeWithDuration(0.5))
                 } else {
                     let scene = TimeTrial(size: self.size)
@@ -151,7 +161,7 @@ class MainMenu: SKScene {
                     skView.ignoresSiblingOrder = true
                     scene.scaleMode = .ResizeFill
                     scene.size = skView.bounds.size
-                    NSNotificationCenter.defaultCenter().postNotificationName("hideiAdBanner", object: nil)
+                    DotsCommon.hideAds()
                     skView.presentScene(scene, transition: SKTransition.crossFadeWithDuration(0.5))
                 }
                 //var scene =  TimeTrial(size: self.size)
@@ -163,13 +173,12 @@ class MainMenu: SKScene {
                 skView.ignoresSiblingOrder = true
                 scene.scaleMode = .ResizeFill
                 scene.size = skView.bounds.size
-                //NSNotificationCenter.defaultCenter().postNotificationName("hideiAdBanner", object: nil)
                 skView.presentScene(scene, transition: SKTransition.moveInWithDirection(SKTransitionDirection.Right, duration: 0.2))
             }
             if name == "gc_button" {
-                NSNotificationCenter.defaultCenter().postNotificationName("showLeaderboard", object: nil)
+                //NSNotificationCenter.defaultCenter().postNotificationName("showLeaderboard", object: nil)
             }
-            if name == "settings_button" {
+            if name == "gear" {
                 let scene =  SettingsPane(size: self.size)
                 let skView = self.view! as SKView
                 skView.ignoresSiblingOrder = true
