@@ -31,6 +31,7 @@ class GameScene: SKScene {
         loadingLabel.runAction(sequence)
         
         DotsCommon.getMuteStatus()
+        DotsCommon.resetPlaysIfNeeded()
         
         //TODO: Add Loading Animation (After I have the logo)
     }

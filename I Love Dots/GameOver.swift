@@ -69,11 +69,12 @@ class GameOver : SKScene{
         
         //Load AdMob Interstitials
         var numberOfPlays: Int? = userDefaults.integerForKey("playnum")
-        if numberOfPlays == nil {
-            numberOfPlays = 0
-        }
         println(numberOfPlays)
-        if numberOfPlays! % 5 == 0 {
+        if numberOfPlays! % 15 == 0 {
+            //TODO: App List
+        } else if numberOfPlays! % 10 == 0 {
+            DotsCommon.VShowAds()
+        } else if numberOfPlays! % 5 == 0 {
             DotsCommon.AMShowAds()
         }
         userDefaults.setInteger(numberOfPlays! + 1, forKey: "playnum")

@@ -12,8 +12,6 @@ import iAd
 import GameKit
 import GoogleMobileAds
 
-//TODO: Make "press button" clickable
-//TODO: Fix Crashes if the player touches off the ball
 
 extension SKNode {
     class func unarchiveFromFile(file : String) -> SKNode? {
@@ -51,11 +49,15 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
 
         
         //Setup Notification Center Listeners
+        
+        //Ads//
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showiAdBanner", name: "showiAdBanner", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showLeaderboard", name: "showLeaderboard", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "hideiAdBanner", name: "hideiAdBanner", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "AMCreateAd", name: "AMCreateAd", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "AMShowAds", name: "AMShowAds", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "VShowAds", name: "VShowAds", object: nil)
+        //Game Center//
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showLeaderboard", name: "showLeaderboard", object: nil)
 
         
         
@@ -163,6 +165,11 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
             self.interstitial.presentFromRootViewController(self)
             self.interstitial = AMCreateAd()
         }
+    }
+    
+    func VShowAds(){
+        var sdk = VungleSDK.sharedSDK()
+        sdk.playAd(self, error: nil)
     }
     
 

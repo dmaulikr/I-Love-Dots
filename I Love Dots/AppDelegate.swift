@@ -18,12 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ADBannerViewDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        /*
-        let fontFamilies = UIFont.familyNames()
-        for familyName in fontFamilies {
-            let fontNames = UIFont.fontNamesForFamilyName(familyName as! String)
-            println("\(familyName): \(fontNames)")
-        }*/
+        var appID = "co.bluetruck.I-Love-Dots"
+        var sdk = VungleSDK.sharedSDK()
+        // start vungle publisher library
+        sdk.startWithAppId(appID)
         return true
     }
 

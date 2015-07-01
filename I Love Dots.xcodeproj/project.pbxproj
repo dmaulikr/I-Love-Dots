@@ -20,11 +20,20 @@
 		FF317B821B448D55006855A6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF317B811B448D55006855A6 /* AVFoundation.framework */; };
 		FF317B841B448D5C006855A6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF317B831B448D5C006855A6 /* AudioToolbox.framework */; };
 		FF317B861B448D61006855A6 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF317B851B448D61006855A6 /* AdSupport.framework */; };
+		FF317B881B44A53E006855A6 /* VungleSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF317B871B44A53E006855A6 /* VungleSDK.framework */; };
+		FF317BA71B44AB76006855A6 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF317B981B44A824006855A6 /* libsqlite3.dylib */; };
+		FF317BA81B44AC04006855A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF4A3A1D1B3B4BA300CBFA13 /* Main.storyboard */; };
+		FF317BA91B44AC08006855A6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF4A3A1F1B3B4BA300CBFA13 /* LaunchScreen.xib */; };
+		FF317BB11B44AC5C006855A6 /* __vungle.db in Resources */ = {isa = PBXBuildFile; fileRef = FF317BAB1B44AC5C006855A6 /* __vungle.db */; };
+		FF317BB21B44AC5C006855A6 /* vg_close.png in Resources */ = {isa = PBXBuildFile; fileRef = FF317BAC1B44AC5C006855A6 /* vg_close.png */; };
+		FF317BB31B44AC5C006855A6 /* vg_cta.png in Resources */ = {isa = PBXBuildFile; fileRef = FF317BAD1B44AC5C006855A6 /* vg_cta.png */; };
+		FF317BB41B44AC5C006855A6 /* vg_mute_off.png in Resources */ = {isa = PBXBuildFile; fileRef = FF317BAE1B44AC5C006855A6 /* vg_mute_off.png */; };
+		FF317BB51B44AC5C006855A6 /* vg_mute_on.png in Resources */ = {isa = PBXBuildFile; fileRef = FF317BAF1B44AC5C006855A6 /* vg_mute_on.png */; };
+		FF317BB61B44AC5C006855A6 /* vg_timer.png in Resources */ = {isa = PBXBuildFile; fileRef = FF317BB01B44AC5C006855A6 /* vg_timer.png */; };
 		FF4885B91B41E94800076C2B /* Armageda Wide.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF4885B81B41E94800076C2B /* Armageda Wide.ttf */; };
 		FF4A39EB1B3B4A0C00CBFA13 /* I_Love_DotsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A39EA1B3B4A0C00CBFA13 /* I_Love_DotsTests.swift */; };
 		FF4A39F61B3B4A0D00CBFA13 /* I_Love_DotsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A39F51B3B4A0D00CBFA13 /* I_Love_DotsUITests.swift */; };
 		FF4A3A041B3B4B0600CBFA13 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF4A3A031B3B4B0600CBFA13 /* Images.xcassets */; };
-		FF4A3A061B3B4B2600CBFA13 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF4A3A051B3B4B2600CBFA13 /* Info.plist */; };
 		FF4A3A101B3B4B3600CBFA13 /* DBasicLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A3A071B3B4B3600CBFA13 /* DBasicLevel.swift */; };
 		FF4A3A111B3B4B3600CBFA13 /* GameModeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A3A081B3B4B3600CBFA13 /* GameModeSelector.swift */; };
 		FF4A3A121B3B4B3600CBFA13 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A3A091B3B4B3600CBFA13 /* GameOver.swift */; };
@@ -35,8 +44,6 @@
 		FF4A3A171B3B4B3600CBFA13 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A3A0E1B3B4B3600CBFA13 /* MainMenu.swift */; };
 		FF4A3A181B3B4B3600CBFA13 /* TimeTrial.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A3A0F1B3B4B3600CBFA13 /* TimeTrial.swift */; };
 		FF4A3A1C1B3B4B7600CBFA13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A3A1B1B3B4B7600CBFA13 /* AppDelegate.swift */; };
-		FF4A3A211B3B4BA300CBFA13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF4A3A1D1B3B4BA300CBFA13 /* Main.storyboard */; };
-		FF4A3A221B3B4BA300CBFA13 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF4A3A1F1B3B4BA300CBFA13 /* LaunchScreen.xib */; };
 		FF5DEE891B3DD62300FE6C72 /* SettingsPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5DEE881B3DD62300FE6C72 /* SettingsPane.swift */; };
 		FFB4F42F1B3C817A00B2D6BE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4A3A291B3B4C9F00CBFA13 /* GameKit.framework */; };
 		FFC254451B3B992C001459A2 /* Supporting Files in Resources */ = {isa = PBXBuildFile; fileRef = FFC254441B3B992C001459A2 /* Supporting Files */; };
@@ -77,6 +84,15 @@
 		FF317B811B448D55006855A6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FF317B831B448D5C006855A6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FF317B851B448D61006855A6 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		FF317B871B44A53E006855A6 /* VungleSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VungleSDK.framework; path = "../../../Downloads/VungleSDK.embeddedframework 2/VungleSDK.framework"; sourceTree = "<group>"; };
+		FF317B971B44A5E9006855A6 /* I_Love_Dots_Bridging_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = I_Love_Dots_Bridging_Header.h; sourceTree = "<group>"; };
+		FF317B981B44A824006855A6 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		FF317BAB1B44AC5C006855A6 /* __vungle.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = __vungle.db; sourceTree = "<group>"; };
+		FF317BAC1B44AC5C006855A6 /* vg_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vg_close.png; sourceTree = "<group>"; };
+		FF317BAD1B44AC5C006855A6 /* vg_cta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vg_cta.png; sourceTree = "<group>"; };
+		FF317BAE1B44AC5C006855A6 /* vg_mute_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vg_mute_off.png; sourceTree = "<group>"; };
+		FF317BAF1B44AC5C006855A6 /* vg_mute_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vg_mute_on.png; sourceTree = "<group>"; };
+		FF317BB01B44AC5C006855A6 /* vg_timer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vg_timer.png; sourceTree = "<group>"; };
 		FF4885B61B41E82000076C2B /* Armageda Wide.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Armageda Wide.ttf"; sourceTree = "<group>"; };
 		FF4885B81B41E94800076C2B /* Armageda Wide.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Armageda Wide.ttf"; path = "I Love Dots/Supporting Files/Armageda Wide.ttf"; sourceTree = "<group>"; };
 		FF4A39CE1B3B4A0C00CBFA13 /* I Love Dots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "I Love Dots.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +132,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF317BA71B44AB76006855A6 /* libsqlite3.dylib in Frameworks */,
+				FF317B881B44A53E006855A6 /* VungleSDK.framework in Frameworks */,
 				FF317B861B448D61006855A6 /* AdSupport.framework in Frameworks */,
 				FF317B841B448D5C006855A6 /* AudioToolbox.framework in Frameworks */,
 				FF317B821B448D55006855A6 /* AVFoundation.framework in Frameworks */,
@@ -148,9 +166,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF317BAA1B44AC5C006855A6 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				FF317BAB1B44AC5C006855A6 /* __vungle.db */,
+				FF317BAC1B44AC5C006855A6 /* vg_close.png */,
+				FF317BAD1B44AC5C006855A6 /* vg_cta.png */,
+				FF317BAE1B44AC5C006855A6 /* vg_mute_off.png */,
+				FF317BAF1B44AC5C006855A6 /* vg_mute_on.png */,
+				FF317BB01B44AC5C006855A6 /* vg_timer.png */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		FF4A39C51B3B4A0C00CBFA13 = {
 			isa = PBXGroup;
 			children = (
+				FF317B981B44A824006855A6 /* libsqlite3.dylib */,
+				FF317B871B44A53E006855A6 /* VungleSDK.framework */,
 				FF317B851B448D61006855A6 /* AdSupport.framework */,
 				FF317B831B448D5C006855A6 /* AudioToolbox.framework */,
 				FF317B811B448D55006855A6 /* AVFoundation.framework */,
@@ -189,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				FF4A3A1B1B3B4B7600CBFA13 /* AppDelegate.swift */,
+				FF317BAA1B44AC5C006855A6 /* Resource */,
 				FF4A3A071B3B4B3600CBFA13 /* DBasicLevel.swift */,
 				FF4A3A081B3B4B3600CBFA13 /* GameModeSelector.swift */,
 				FF4A3A091B3B4B3600CBFA13 /* GameOver.swift */,
@@ -197,6 +231,7 @@
 				FFFC62CA1B3B615B00B3D8CF /* GameScene.sks */,
 				FF4A3A0A1B3B4B3600CBFA13 /* GameScene.swift */,
 				FF4A3A0B1B3B4B3600CBFA13 /* GameViewController.swift */,
+				FF317B971B44A5E9006855A6 /* I_Love_Dots_Bridging_Header.h */,
 				FF5DEE881B3DD62300FE6C72 /* SettingsPane.swift */,
 				FF4A3A0C1B3B4B3600CBFA13 /* Infinite.swift */,
 				FF4A3A0D1B3B4B3600CBFA13 /* LoadingScreen.swift */,
@@ -345,13 +380,18 @@
 			files = (
 				FF4885B91B41E94800076C2B /* Armageda Wide.ttf in Resources */,
 				FFC254471B3B99B5001459A2 /* Blackout Sunrise.ttf in Resources */,
+				FF317BB61B44AC5C006855A6 /* vg_timer.png in Resources */,
 				FFC254451B3B992C001459A2 /* Supporting Files in Resources */,
-				FF4A3A221B3B4BA300CBFA13 /* LaunchScreen.xib in Resources */,
-				FF4A3A061B3B4B2600CBFA13 /* Info.plist in Resources */,
+				FF317BB41B44AC5C006855A6 /* vg_mute_off.png in Resources */,
+				FF317BB21B44AC5C006855A6 /* vg_close.png in Resources */,
+				FF317BA81B44AC04006855A6 /* Main.storyboard in Resources */,
+				FF317BB51B44AC5C006855A6 /* vg_mute_on.png in Resources */,
+				FF317BB11B44AC5C006855A6 /* __vungle.db in Resources */,
+				FF317BA91B44AC08006855A6 /* LaunchScreen.xib in Resources */,
+				FF317BB31B44AC5C006855A6 /* vg_cta.png in Resources */,
 				FF4A3A041B3B4B0600CBFA13 /* Images.xcassets in Resources */,
 				FFFC62CD1B3B620B00B3D8CF /* blop.wav in Resources */,
 				FFFC62CB1B3B615B00B3D8CF /* GameScene.sks in Resources */,
-				FF4A3A211B3B4BA300CBFA13 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,16 +573,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tom Gilardi (J4NCJXZ9FM)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/chrisgilardi/Downloads/GoogleMobileAdsSdkiOS-7.3.1",
+					/Users/chrisgilardi/Downloads/VungleSDK.embeddedframework,
+					2,
 				);
 				INFOPLIST_FILE = "I Love Dots/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CODE_SIGN_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "co.bluetruck.I-Love-Dots";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a618def0-a885-4494-b07e-32fb4b9a41a6";
+				SWIFT_OBJC_BRIDGING_HEADER = "I Love Dots/I_Love_Dots_Bridging_Header.h";
 			};
 			name = Debug;
 		};
@@ -550,16 +595,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tom Gilardi (J4NCJXZ9FM)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/chrisgilardi/Downloads/GoogleMobileAdsSdkiOS-7.3.1",
+					/Users/chrisgilardi/Downloads/VungleSDK.embeddedframework,
+					2,
 				);
 				INFOPLIST_FILE = "I Love Dots/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CODE_SIGN_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "co.bluetruck.I-Love-Dots";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a618def0-a885-4494-b07e-32fb4b9a41a6";
+				SWIFT_OBJC_BRIDGING_HEADER = "I Love Dots/I_Love_Dots_Bridging_Header.h";
 			};
 			name = Release;
 		};

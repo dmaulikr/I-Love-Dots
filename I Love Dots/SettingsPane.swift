@@ -17,6 +17,8 @@ class SettingsPane: SKScene {
     let adlessButton = SKLabelNode(text: "Go Adless")
     let rateButton = SKLabelNode(text: "Rate!")
     let moreGames = SKLabelNode(text: "More")
+    let gamesPlayed = SKLabelNode(text: String(DotsCommon.userDefaults.integerForKey("playnum")) + " " + "Games")
+    var infoNum: Int = 1
     
     private let userDefaults = DotsCommon.userDefaults
     
@@ -59,6 +61,12 @@ class SettingsPane: SKScene {
         moreGames.fontName = DotsCommon.font
         moreGames.name = "more"
         self.addChild(moreGames)
+        
+        gamesPlayed.position = CGPointMake(moreGames.position.x, CGRectGetMinY(self.frame) + 60)
+        gamesPlayed.fontName = DotsCommon.font
+        gamesPlayed.fontSize = 30
+        gamesPlayed.name = "gamesplayed"
+        self.addChild(gamesPlayed)
         
         
     }
@@ -115,6 +123,9 @@ class SettingsPane: SKScene {
             } else if name == "rate" {
                 //let iTunesLink = "itms://itunes.apple.com/us/app/polarr-photo-editor/id988173374?mt=8"
                 //UIApplication.sharedApplication().openURL(NSURL(string: iTunesLink)!)
+            } else if name == "gamesplayed" {
+                gamesPlayed.runAction(DotsCommon.wiggle())
+                let timer = NSTimer.scheduledTimerWithTimeInterval(0.625, target: self, selector: "changeInfoText", userInfo: nil, repeats: false)
             }
         }
     }
@@ -132,5 +143,19 @@ class SettingsPane: SKScene {
     
     func goAdless(){
         //TODO: Adless Version
+    }
+    
+    func changeInfoText(){
+        if infoNum == 0 {
+            gamesPlayed.text = String(DotsCommon.userDefaults.integerForKey("playnum")) + " " + "Games"
+            self.infoNum = 1
+        } else if infoNum == 1 {
+            let nsObject: AnyObject? = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"]
+            let build = NSBundle.mainBundle().infoDictionary!["CFBundleVersion"] as! String
+            let version = nsObject as! String
+            gamesPlayed.text = version + " (Build " + build + ")"
+            self.infoNum = 0
+        }
+        println(infoNum)
     }
 }

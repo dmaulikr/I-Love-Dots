@@ -30,6 +30,10 @@ class DotsCommon {
         NSNotificationCenter.defaultCenter().postNotificationName("AMShowAds", object: nil)
     }
     
+    static func VShowAds() {
+        NSNotificationCenter.defaultCenter().postNotificationName("VShowAds", object: nil)
+    }
+    
     static func wiggle() -> SKAction {
         let timeInterval: NSTimeInterval = 0.125
         return SKAction.sequence([SKAction.rotateByAngle(-0.26179938779, duration: timeInterval), SKAction.rotateByAngle(0.52359877559, duration: timeInterval), SKAction.rotateByAngle(-0.52359877559, duration: timeInterval), SKAction.rotateByAngle(0.52359877559, duration: timeInterval), SKAction.rotateByAngle(-0.26179938779, duration: timeInterval)])
@@ -40,5 +44,12 @@ class DotsCommon {
             userDefaults.setBool(false, forKey: "mutestatus")
         }
         else {return}
+    }
+    
+    static func resetPlaysIfNeeded() {
+        let numberOfPlays: Int? = userDefaults.integerForKey("playnum")
+        if numberOfPlays == nil {
+            userDefaults.setInteger(0, forKey: "playnum")
+        }
     }
 }

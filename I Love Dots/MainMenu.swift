@@ -177,6 +177,7 @@ class MainMenu: SKScene {
             }
             if name == "gc_button" {
                 //NSNotificationCenter.defaultCenter().postNotificationName("showLeaderboard", object: nil)
+                //DotsCommon.VShowAds()
             }
             if name == "gear" {
                 let scene =  SettingsPane(size: self.size)
