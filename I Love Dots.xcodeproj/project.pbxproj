@@ -30,6 +30,15 @@
 		FF317BB41B44AC5C006855A6 /* vg_mute_off.png in Resources */ = {isa = PBXBuildFile; fileRef = FF317BAE1B44AC5C006855A6 /* vg_mute_off.png */; };
 		FF317BB51B44AC5C006855A6 /* vg_mute_on.png in Resources */ = {isa = PBXBuildFile; fileRef = FF317BAF1B44AC5C006855A6 /* vg_mute_on.png */; };
 		FF317BB61B44AC5C006855A6 /* vg_timer.png in Resources */ = {isa = PBXBuildFile; fileRef = FF317BB01B44AC5C006855A6 /* vg_timer.png */; };
+		FF317BBF1B44DFBE006855A6 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF317BBD1B44DFBE006855A6 /* Bolts.framework */; };
+		FF317BC01B44DFBE006855A6 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF317BBE1B44DFBE006855A6 /* Parse.framework */; };
+		FF317BC21B44DFDB006855A6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF317BC11B44DFDB006855A6 /* libz.dylib */; };
+		FF317BC41B44DFEB006855A6 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF317BC31B44DFEB006855A6 /* CFNetwork.framework */; };
+		FF317BC61B44DFF4006855A6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF317BC51B44DFF4006855A6 /* CoreLocation.framework */; };
+		FF317BC81B44DFFC006855A6 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF317BC71B44DFFC006855A6 /* MobileCoreServices.framework */; };
+		FF317BCA1B44E022006855A6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF317BC91B44E022006855A6 /* QuartzCore.framework */; };
+		FF317BCC1B44E029006855A6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF317BCB1B44E029006855A6 /* Security.framework */; };
+		FF317BCD1B44E03D006855A6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4A3A251B3B4C1A00CBFA13 /* StoreKit.framework */; };
 		FF4885B91B41E94800076C2B /* Armageda Wide.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF4885B81B41E94800076C2B /* Armageda Wide.ttf */; };
 		FF4A39EB1B3B4A0C00CBFA13 /* I_Love_DotsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A39EA1B3B4A0C00CBFA13 /* I_Love_DotsTests.swift */; };
 		FF4A39F61B3B4A0D00CBFA13 /* I_Love_DotsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A39F51B3B4A0D00CBFA13 /* I_Love_DotsUITests.swift */; };
@@ -93,6 +102,14 @@
 		FF317BAE1B44AC5C006855A6 /* vg_mute_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vg_mute_off.png; sourceTree = "<group>"; };
 		FF317BAF1B44AC5C006855A6 /* vg_mute_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vg_mute_on.png; sourceTree = "<group>"; };
 		FF317BB01B44AC5C006855A6 /* vg_timer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vg_timer.png; sourceTree = "<group>"; };
+		FF317BBD1B44DFBE006855A6 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../Downloads/parse-library-1.7.5/Bolts.framework"; sourceTree = "<group>"; };
+		FF317BBE1B44DFBE006855A6 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../Downloads/parse-library-1.7.5/Parse.framework"; sourceTree = "<group>"; };
+		FF317BC11B44DFDB006855A6 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		FF317BC31B44DFEB006855A6 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		FF317BC51B44DFF4006855A6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		FF317BC71B44DFFC006855A6 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		FF317BC91B44E022006855A6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		FF317BCB1B44E029006855A6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		FF4885B61B41E82000076C2B /* Armageda Wide.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Armageda Wide.ttf"; sourceTree = "<group>"; };
 		FF4885B81B41E94800076C2B /* Armageda Wide.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Armageda Wide.ttf"; path = "I Love Dots/Supporting Files/Armageda Wide.ttf"; sourceTree = "<group>"; };
 		FF4A39CE1B3B4A0C00CBFA13 /* I Love Dots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "I Love Dots.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,10 +149,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF317BCD1B44E03D006855A6 /* StoreKit.framework in Frameworks */,
+				FF317BCC1B44E029006855A6 /* Security.framework in Frameworks */,
+				FF317BCA1B44E022006855A6 /* QuartzCore.framework in Frameworks */,
+				FF317BC81B44DFFC006855A6 /* MobileCoreServices.framework in Frameworks */,
+				FF317BC61B44DFF4006855A6 /* CoreLocation.framework in Frameworks */,
+				FF317BC41B44DFEB006855A6 /* CFNetwork.framework in Frameworks */,
+				FF317B841B448D5C006855A6 /* AudioToolbox.framework in Frameworks */,
+				FF317BC21B44DFDB006855A6 /* libz.dylib in Frameworks */,
+				FF317BBF1B44DFBE006855A6 /* Bolts.framework in Frameworks */,
+				FF317BC01B44DFBE006855A6 /* Parse.framework in Frameworks */,
 				FF317BA71B44AB76006855A6 /* libsqlite3.dylib in Frameworks */,
 				FF317B881B44A53E006855A6 /* VungleSDK.framework in Frameworks */,
 				FF317B861B448D61006855A6 /* AdSupport.framework in Frameworks */,
-				FF317B841B448D5C006855A6 /* AudioToolbox.framework in Frameworks */,
 				FF317B821B448D55006855A6 /* AVFoundation.framework in Frameworks */,
 				FF317B801B448D4F006855A6 /* CoreGraphics.framework in Frameworks */,
 				FF317B7E1B448D4A006855A6 /* CoreMedia.framework in Frameworks */,
@@ -182,6 +208,14 @@
 		FF4A39C51B3B4A0C00CBFA13 = {
 			isa = PBXGroup;
 			children = (
+				FF317BCB1B44E029006855A6 /* Security.framework */,
+				FF317BC91B44E022006855A6 /* QuartzCore.framework */,
+				FF317BC71B44DFFC006855A6 /* MobileCoreServices.framework */,
+				FF317BC51B44DFF4006855A6 /* CoreLocation.framework */,
+				FF317BC31B44DFEB006855A6 /* CFNetwork.framework */,
+				FF317BC11B44DFDB006855A6 /* libz.dylib */,
+				FF317BBD1B44DFBE006855A6 /* Bolts.framework */,
+				FF317BBE1B44DFBE006855A6 /* Parse.framework */,
 				FF317B981B44A824006855A6 /* libsqlite3.dylib */,
 				FF317B871B44A53E006855A6 /* VungleSDK.framework */,
 				FF317B851B448D61006855A6 /* AdSupport.framework */,
@@ -579,6 +613,9 @@
 					"/Users/chrisgilardi/Downloads/GoogleMobileAdsSdkiOS-7.3.1",
 					/Users/chrisgilardi/Downloads/VungleSDK.embeddedframework,
 					2,
+					"/Users/chrisgilardi/Downloads/aws-ios-sdk-2.2.0/frameworks",
+					"/Users/chrisgilardi/Downloads/aws-ios-sdk-2.2.0/frameworks/extras",
+					"/Users/chrisgilardi/Downloads/parse-library-1.7.5",
 				);
 				INFOPLIST_FILE = "I Love Dots/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
@@ -601,6 +638,9 @@
 					"/Users/chrisgilardi/Downloads/GoogleMobileAdsSdkiOS-7.3.1",
 					/Users/chrisgilardi/Downloads/VungleSDK.embeddedframework,
 					2,
+					"/Users/chrisgilardi/Downloads/aws-ios-sdk-2.2.0/frameworks",
+					"/Users/chrisgilardi/Downloads/aws-ios-sdk-2.2.0/frameworks/extras",
+					"/Users/chrisgilardi/Downloads/parse-library-1.7.5",
 				);
 				INFOPLIST_FILE = "I Love Dots/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;

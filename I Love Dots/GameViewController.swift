@@ -153,7 +153,6 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
     func AMCreateAd() -> GADInterstitial {
         var ad = GADInterstitial(adUnitID: "ca-app-pub-1206890352094684/4884623048")
         var request = GADRequest()
-        
         request.testDevices = ["74c2d2e1ae6dd8683b0a5ce977872e80"]
         ad.loadRequest(request)
         

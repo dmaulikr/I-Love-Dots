@@ -28,10 +28,12 @@ class DotsCommon {
     
     static func AMShowAds() {
         NSNotificationCenter.defaultCenter().postNotificationName("AMShowAds", object: nil)
+        println("Showing AdMob Interstitial!")
     }
     
     static func VShowAds() {
         NSNotificationCenter.defaultCenter().postNotificationName("VShowAds", object: nil)
+        println("Showing Vungle Ads!")
     }
     
     static func wiggle() -> SKAction {

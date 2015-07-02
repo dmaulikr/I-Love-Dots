@@ -10,5 +10,7 @@
 #define I_Love_Dots_I_Love_Dots_Bridging_Header_h
 
 #import <VungleSDK/VungleSDK.h>
+#import <Parse/Parse.h>
+#import <Bolts/Bolts.h>
 
 #endif
