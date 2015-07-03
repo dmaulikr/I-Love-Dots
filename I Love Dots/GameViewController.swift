@@ -11,6 +11,7 @@ import SpriteKit
 import iAd
 import GameKit
 import GoogleMobileAds
+import StoreKit
 
 
 extension SKNode {
@@ -30,15 +31,24 @@ extension SKNode {
     }
 }
 
-class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterControllerDelegate {
+class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterControllerDelegate, SKPaymentTransactionObserver, SKProductsRequestDelegate {
     
     var localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
     var interstitial: GADInterstitial!
+    let defaults = DotsCommon.userDefaults
+    var product_id: NSString?
     
     //var bannerAd:ADBannerView = ADBannerView()
     var adBannerView: ADBannerView = ADBannerView()
 
     override func viewDidLoad() {
+        
+        product_id = "DotsAdless"
+        
+        
+        
+        
+        
         
         interstitial = AMCreateAd()
         
@@ -47,6 +57,9 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
         loadAds()
         super.viewDidLoad()
 
+        SKPaymentQueue.defaultQueue().addTransactionObserver(self)
+        
+        
         
         //Setup Notification Center Listeners
         
@@ -58,7 +71,10 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "VShowAds", name: "VShowAds", object: nil)
         //Game Center//
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showLeaderboard", name: "showLeaderboard", object: nil)
-
+        //Sharing Button//
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showSharingView", name: "showSharingView", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "buyAdless", name: "buyAdless", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "restorePurchase", name: "buyAdless", object: nil)
         
         
         
@@ -169,6 +185,95 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
     func VShowAds(){
         var sdk = VungleSDK.sharedSDK()
         sdk.playAd(self, error: nil)
+    }
+    
+    func showSharingView(){
+        let textToShare = "Check out the Game, \"I Love Dots\" On the App Store!"
+        
+        if let myWebsite = NSURL(string: "http://google.com/")
+        {
+            let objectsToShare = [textToShare, myWebsite]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            
+            self.presentViewController(activityVC, animated: true, completion: nil)
+        }
+    }
+    
+    func buyAdless(){
+        println("About to fetch the products");
+        // We check that we are allow to make the purchase.
+        if (SKPaymentQueue.canMakePayments())
+        {
+            var productID:NSSet = NSSet(object: self.product_id!);
+            var productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as Set<NSObject>);
+            productsRequest.delegate = self;
+            productsRequest.start();
+            println("Fething Products");
+        }else{
+            println("can't make purchases");
+        }
+    }
+    
+    func buyProduct(product: SKProduct){
+        println("Sending the Payment Request to Apple");
+        var payment = SKPayment(product: product)
+        SKPaymentQueue.defaultQueue().addPayment(payment);
+        
+    }
+    
+    func productsRequest (request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
+        println("got the request from Apple")
+        var count : Int = response.products.count
+        if (count>0) {
+            var validProducts = response.products
+            var validProduct: SKProduct = response.products[0] as! SKProduct
+            if (validProduct.productIdentifier == self.product_id) {
+                println(validProduct.localizedTitle)
+                println(validProduct.localizedDescription)
+                println(validProduct.price)
+                buyProduct(validProduct);
+            } else {
+                println(validProduct.productIdentifier)
+            }
+        } else {
+            println("nothing")
+        }
+    }
+    
+    func request(request: SKRequest!, didFailWithError error: NSError!) {
+        println("La vaina fallo");
+    }
+    
+    func paymentQueue(queue: SKPaymentQueue!, updatedTransactions transactions: [AnyObject]!)    {
+        println("Received Payment Transaction Response from Apple");
+        
+        for transaction:AnyObject in transactions {
+            if let trans:SKPaymentTransaction = transaction as? SKPaymentTransaction{
+                switch trans.transactionState {
+                case .Purchased:
+                    println("Product Purchased");
+                    SKPaymentQueue.defaultQueue().finishTransaction(transaction as! SKPaymentTransaction)
+                    DotsCommon.userDefaults.setBool(true, forKey: "adless")
+                    break;
+                case .Failed:
+                    println("Purchased Failed");
+                    SKPaymentQueue.defaultQueue().finishTransaction(transaction as! SKPaymentTransaction)
+                    break;
+                case .Restored:
+                    println("Purchase Restored")
+                    SKPaymentQueue.defaultQueue().finishTransaction(transaction as! SKPaymentTransaction)
+                    DotsCommon.userDefaults.setBool(true, forKey: "adless")
+                default:
+                    break;
+                }
+            }
+        }
+        
+    }
+    
+    func restorePurchase() {
+        
+        SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
     }
     
 

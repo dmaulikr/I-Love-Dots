@@ -17,6 +17,7 @@ class SettingsPane: SKScene {
     let adlessButton = SKLabelNode(text: "Go Adless")
     let rateButton = SKLabelNode(text: "Rate!")
     let moreGames = SKLabelNode(text: "More")
+    //let restoreButton = SKLabelNode(text: "Restore Purchase")
     let gamesPlayed = SKLabelNode(text: String(DotsCommon.userDefaults.integerForKey("playnum")) + " " + "Games")
     var infoNum: Int = 1
     
@@ -68,6 +69,11 @@ class SettingsPane: SKScene {
         gamesPlayed.name = "gamesplayed"
         self.addChild(gamesPlayed)
         
+        //restoreButton.position = CGPointMake(moreGames.position.x, moreGames.position.y - 60)
+        //restoreButton.fontName = DotsCommon.font
+        //restoreButton.fontSize = 30
+        //restoreButton.name = "restorebutton"
+        //self.addChild(restoreButton)
         
     }
     
@@ -86,6 +92,10 @@ class SettingsPane: SKScene {
                 rateButton.alpha = 0.7
             } else if name == "more" {
                 moreGames.alpha = 0.7
+            } else if name == "adless" {
+                adlessButton.alpha = 0.7
+            } else if name == "restorebutton" {
+                //restoreButton.alpha = 0.7
             }
         }
     }
@@ -100,6 +110,8 @@ class SettingsPane: SKScene {
         muteButton.alpha = 1.0
         moreGames.alpha = 1.0
         rateButton.alpha = 1.0
+        adlessButton.alpha = 1.0
+        //restoreButton.alpha = 1.0
         
         if let name = touchedNode.name {
             if name == "back" {
@@ -126,6 +138,12 @@ class SettingsPane: SKScene {
             } else if name == "gamesplayed" {
                 gamesPlayed.runAction(DotsCommon.wiggle())
                 let timer = NSTimer.scheduledTimerWithTimeInterval(0.625, target: self, selector: "changeInfoText", userInfo: nil, repeats: false)
+            } else if name == "more" {
+                
+            } else if name == "adless" {
+                DotsCommon.buyAdless()
+            } else if name == "restorebutton" {
+                DotsCommon.restorePurchase()
             }
         }
     }

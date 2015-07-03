@@ -36,9 +36,35 @@ class DotsCommon {
         println("Showing Vungle Ads!")
     }
     
+    static func showShareView() {
+        NSNotificationCenter.defaultCenter().postNotificationName("showSharingView", object: nil)
+    }
+    
+    static func getAdStatus() -> Bool {
+        return userDefaults.boolForKey("adless")
+    }
+    
+    static func buyAdless() {
+        NSNotificationCenter.defaultCenter().postNotificationName("buyAdless", object: nil)
+    }
+    
+    static func restorePurchase() {
+        NSNotificationCenter.defaultCenter().postNotificationName("restorePurchase", object: nil)
+    }
+    
+    
+    
     static func wiggle() -> SKAction {
         let timeInterval: NSTimeInterval = 0.125
         return SKAction.sequence([SKAction.rotateByAngle(-0.26179938779, duration: timeInterval), SKAction.rotateByAngle(0.52359877559, duration: timeInterval), SKAction.rotateByAngle(-0.52359877559, duration: timeInterval), SKAction.rotateByAngle(0.52359877559, duration: timeInterval), SKAction.rotateByAngle(-0.26179938779, duration: timeInterval)])
+    }
+    
+    static func slideInFromSide(frame: CGRect) -> SKAction {
+        return SKAction.moveTo(CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame)), duration: 0.175)
+    }
+    
+    static func slideOutRight(frame: CGRect, width: CGFloat) -> SKAction {
+        return SKAction.moveTo(CGPointMake(CGRectGetMaxX(frame) + width, CGRectGetMidY(frame)), duration: 0.175)
     }
     
     static func getMuteStatus() {
@@ -54,4 +80,6 @@ class DotsCommon {
             userDefaults.setInteger(0, forKey: "playnum")
         }
     }
+    
+    
 }

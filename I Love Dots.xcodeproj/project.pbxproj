@@ -20,7 +20,6 @@
 		FF317B821B448D55006855A6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF317B811B448D55006855A6 /* AVFoundation.framework */; };
 		FF317B841B448D5C006855A6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF317B831B448D5C006855A6 /* AudioToolbox.framework */; };
 		FF317B861B448D61006855A6 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF317B851B448D61006855A6 /* AdSupport.framework */; };
-		FF317B881B44A53E006855A6 /* VungleSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF317B871B44A53E006855A6 /* VungleSDK.framework */; };
 		FF317BA71B44AB76006855A6 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF317B981B44A824006855A6 /* libsqlite3.dylib */; };
 		FF317BA81B44AC04006855A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF4A3A1D1B3B4BA300CBFA13 /* Main.storyboard */; };
 		FF317BA91B44AC08006855A6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF4A3A1F1B3B4BA300CBFA13 /* LaunchScreen.xib */; };
@@ -38,7 +37,6 @@
 		FF317BC81B44DFFC006855A6 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF317BC71B44DFFC006855A6 /* MobileCoreServices.framework */; };
 		FF317BCA1B44E022006855A6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF317BC91B44E022006855A6 /* QuartzCore.framework */; };
 		FF317BCC1B44E029006855A6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF317BCB1B44E029006855A6 /* Security.framework */; };
-		FF317BCD1B44E03D006855A6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4A3A251B3B4C1A00CBFA13 /* StoreKit.framework */; };
 		FF4885B91B41E94800076C2B /* Armageda Wide.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF4885B81B41E94800076C2B /* Armageda Wide.ttf */; };
 		FF4A39EB1B3B4A0C00CBFA13 /* I_Love_DotsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A39EA1B3B4A0C00CBFA13 /* I_Love_DotsTests.swift */; };
 		FF4A39F61B3B4A0D00CBFA13 /* I_Love_DotsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A39F51B3B4A0D00CBFA13 /* I_Love_DotsUITests.swift */; };
@@ -54,6 +52,8 @@
 		FF4A3A181B3B4B3600CBFA13 /* TimeTrial.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A3A0F1B3B4B3600CBFA13 /* TimeTrial.swift */; };
 		FF4A3A1C1B3B4B7600CBFA13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A3A1B1B3B4B7600CBFA13 /* AppDelegate.swift */; };
 		FF5DEE891B3DD62300FE6C72 /* SettingsPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5DEE881B3DD62300FE6C72 /* SettingsPane.swift */; };
+		FF892D6F1B46728100D47E2F /* VungleSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF892D6E1B46728100D47E2F /* VungleSDK.framework */; };
+		FF9C9FF51B4512E1007C3A14 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9C9FF41B4512E1007C3A14 /* StoreKit.framework */; };
 		FFB4F42F1B3C817A00B2D6BE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4A3A291B3B4C9F00CBFA13 /* GameKit.framework */; };
 		FFC254451B3B992C001459A2 /* Supporting Files in Resources */ = {isa = PBXBuildFile; fileRef = FFC254441B3B992C001459A2 /* Supporting Files */; };
 		FFC254471B3B99B5001459A2 /* Blackout Sunrise.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFC254461B3B99B5001459A2 /* Blackout Sunrise.ttf */; };
@@ -80,6 +80,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF2D11A61B451DBF00084A7D /* VungleSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VungleSDK.framework; path = "I Love Dots/VungleSDK.framework"; sourceTree = "<group>"; };
 		FF317B6D1B444D0D006855A6 /* TimeSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSelector.swift; sourceTree = "<group>"; };
 		FF317B6F1B444E47006855A6 /* DotsCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotsCommon.swift; sourceTree = "<group>"; };
 		FF317B711B448CF8006855A6 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "../../../Downloads/GoogleMobileAdsSdkiOS-7.3.1/GoogleMobileAds.framework"; sourceTree = "<group>"; };
@@ -93,7 +94,6 @@
 		FF317B811B448D55006855A6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FF317B831B448D5C006855A6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FF317B851B448D61006855A6 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		FF317B871B44A53E006855A6 /* VungleSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VungleSDK.framework; path = "../../../Downloads/VungleSDK.embeddedframework 2/VungleSDK.framework"; sourceTree = "<group>"; };
 		FF317B971B44A5E9006855A6 /* I_Love_Dots_Bridging_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = I_Love_Dots_Bridging_Header.h; sourceTree = "<group>"; };
 		FF317B981B44A824006855A6 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		FF317BAB1B44AC5C006855A6 /* __vungle.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = __vungle.db; sourceTree = "<group>"; };
@@ -133,10 +133,11 @@
 		FF4A3A1B1B3B4B7600CBFA13 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF4A3A1E1B3B4BA300CBFA13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF4A3A201B3B4BA300CBFA13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		FF4A3A251B3B4C1A00CBFA13 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		FF4A3A271B3B4C5C00CBFA13 /* GameplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameplayKit.framework; path = "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/GameplayKit.framework"; sourceTree = "<absolute>"; };
 		FF4A3A291B3B4C9F00CBFA13 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		FF5DEE881B3DD62300FE6C72 /* SettingsPane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPane.swift; sourceTree = "<group>"; };
+		FF892D6E1B46728100D47E2F /* VungleSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VungleSDK.framework; path = "../../../Downloads/VungleSDK.embeddedframework 2/VungleSDK.framework"; sourceTree = "<group>"; };
+		FF9C9FF41B4512E1007C3A14 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		FFC254441B3B992C001459A2 /* Supporting Files */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Supporting Files"; sourceTree = "<group>"; };
 		FFC254461B3B99B5001459A2 /* Blackout Sunrise.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Blackout Sunrise.ttf"; path = "I Love Dots/Supporting Files/Blackout Sunrise.ttf"; sourceTree = "<group>"; };
 		FFD4C0371B41B0F100D9E1BD /* DancingDot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DancingDot.swift; sourceTree = "<group>"; };
@@ -149,7 +150,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF317BCD1B44E03D006855A6 /* StoreKit.framework in Frameworks */,
 				FF317BCC1B44E029006855A6 /* Security.framework in Frameworks */,
 				FF317BCA1B44E022006855A6 /* QuartzCore.framework in Frameworks */,
 				FF317BC81B44DFFC006855A6 /* MobileCoreServices.framework in Frameworks */,
@@ -159,9 +159,10 @@
 				FF317BC21B44DFDB006855A6 /* libz.dylib in Frameworks */,
 				FF317BBF1B44DFBE006855A6 /* Bolts.framework in Frameworks */,
 				FF317BC01B44DFBE006855A6 /* Parse.framework in Frameworks */,
+				FF892D6F1B46728100D47E2F /* VungleSDK.framework in Frameworks */,
 				FF317BA71B44AB76006855A6 /* libsqlite3.dylib in Frameworks */,
-				FF317B881B44A53E006855A6 /* VungleSDK.framework in Frameworks */,
 				FF317B861B448D61006855A6 /* AdSupport.framework in Frameworks */,
+				FF9C9FF51B4512E1007C3A14 /* StoreKit.framework in Frameworks */,
 				FF317B821B448D55006855A6 /* AVFoundation.framework in Frameworks */,
 				FF317B801B448D4F006855A6 /* CoreGraphics.framework in Frameworks */,
 				FF317B7E1B448D4A006855A6 /* CoreMedia.framework in Frameworks */,
@@ -208,6 +209,9 @@
 		FF4A39C51B3B4A0C00CBFA13 = {
 			isa = PBXGroup;
 			children = (
+				FF892D6E1B46728100D47E2F /* VungleSDK.framework */,
+				FF2D11A61B451DBF00084A7D /* VungleSDK.framework */,
+				FF9C9FF41B4512E1007C3A14 /* StoreKit.framework */,
 				FF317BCB1B44E029006855A6 /* Security.framework */,
 				FF317BC91B44E022006855A6 /* QuartzCore.framework */,
 				FF317BC71B44DFFC006855A6 /* MobileCoreServices.framework */,
@@ -217,7 +221,6 @@
 				FF317BBD1B44DFBE006855A6 /* Bolts.framework */,
 				FF317BBE1B44DFBE006855A6 /* Parse.framework */,
 				FF317B981B44A824006855A6 /* libsqlite3.dylib */,
-				FF317B871B44A53E006855A6 /* VungleSDK.framework */,
 				FF317B851B448D61006855A6 /* AdSupport.framework */,
 				FF317B831B448D5C006855A6 /* AudioToolbox.framework */,
 				FF317B811B448D55006855A6 /* AVFoundation.framework */,
@@ -234,7 +237,6 @@
 				FF4885B61B41E82000076C2B /* Armageda Wide.ttf */,
 				FF4A3A291B3B4C9F00CBFA13 /* GameKit.framework */,
 				FF4A3A271B3B4C5C00CBFA13 /* GameplayKit.framework */,
-				FF4A3A251B3B4C1A00CBFA13 /* StoreKit.framework */,
 				FF4A39D01B3B4A0C00CBFA13 /* I Love Dots */,
 				FF4A39E91B3B4A0C00CBFA13 /* I Love DotsTests */,
 				FF4A39F41B3B4A0D00CBFA13 /* I Love DotsUITests */,
@@ -373,7 +375,7 @@
 								enabled = 1;
 							};
 							com.apple.InAppPurchase = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -607,7 +609,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tom Gilardi (J4NCJXZ9FM)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/chrisgilardi/Downloads/GoogleMobileAdsSdkiOS-7.3.1",
@@ -616,6 +619,15 @@
 					"/Users/chrisgilardi/Downloads/aws-ios-sdk-2.2.0/frameworks",
 					"/Users/chrisgilardi/Downloads/aws-ios-sdk-2.2.0/frameworks/extras",
 					"/Users/chrisgilardi/Downloads/parse-library-1.7.5",
+					/Users/chrisgilardi/Downloads/VungleSDK.embeddedframework,
+					2,
+					/Users/chrisgilardi/Downloads/VungleSDK.embeddedframework,
+					2,
+					"$(PROJECT_DIR)/I",
+					Love,
+					Dots,
+					/Users/chrisgilardi/Downloads/VungleSDK.embeddedframework,
+					2,
 				);
 				INFOPLIST_FILE = "I Love Dots/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
@@ -623,7 +635,7 @@
 				OTHER_CODE_SIGN_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "co.bluetruck.I-Love-Dots";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a618def0-a885-4494-b07e-32fb4b9a41a6";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "I Love Dots/I_Love_Dots_Bridging_Header.h";
 			};
 			name = Debug;
@@ -632,7 +644,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tom Gilardi (J4NCJXZ9FM)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/chrisgilardi/Downloads/GoogleMobileAdsSdkiOS-7.3.1",
@@ -641,6 +654,15 @@
 					"/Users/chrisgilardi/Downloads/aws-ios-sdk-2.2.0/frameworks",
 					"/Users/chrisgilardi/Downloads/aws-ios-sdk-2.2.0/frameworks/extras",
 					"/Users/chrisgilardi/Downloads/parse-library-1.7.5",
+					/Users/chrisgilardi/Downloads/VungleSDK.embeddedframework,
+					2,
+					/Users/chrisgilardi/Downloads/VungleSDK.embeddedframework,
+					2,
+					"$(PROJECT_DIR)/I",
+					Love,
+					Dots,
+					/Users/chrisgilardi/Downloads/VungleSDK.embeddedframework,
+					2,
 				);
 				INFOPLIST_FILE = "I Love Dots/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
@@ -648,7 +670,7 @@
 				OTHER_CODE_SIGN_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "co.bluetruck.I-Love-Dots";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a618def0-a885-4494-b07e-32fb4b9a41a6";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "I Love Dots/I_Love_Dots_Bridging_Header.h";
 			};
 			name = Release;

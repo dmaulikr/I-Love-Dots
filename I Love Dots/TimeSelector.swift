@@ -9,17 +9,6 @@
 import Foundation
 import SpriteKit
 
-class TimeSelector : SKScene {
-    
-    let font = "ArmagedaWide"
-    
-    override func didMoveToView(view: SKView) {
-        let selectTen = SKLabelNode(text: "10")
-        selectTen.name = "select10"
-        selectTen.fontColor = SKColor.blackColor()
-        selectTen.fontName = DotsCommon.font
-        let selectTwenty = SKLabelNode(text: "20")
-        let selectThirty = SKLabelNode(text: "30")
-    }
+class TimeSelector : SKNode {
     
 }

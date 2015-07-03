@@ -24,10 +24,12 @@ class GameOver : SKScene{
     let restartButton = SKSpriteNode(imageNamed: "restartbutton")
     let mainMenuButton = SKSpriteNode(imageNamed: "mainmenubutton")
     let showads: Bool = false
+    var length: Double = 20
     
     override func didMoveToView(view: SKView) {
-        
-        DotsCommon.showAds()
+        if !DotsCommon.getAdStatus() {
+            DotsCommon.showAds()
+        }
         
         //Background Color
         self.backgroundColor = UIColor(red: 0.94, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -70,12 +72,15 @@ class GameOver : SKScene{
         //Load AdMob Interstitials
         var numberOfPlays: Int? = userDefaults.integerForKey("playnum")
         println(numberOfPlays)
-        if numberOfPlays! % 15 == 0 {
-            //TODO: App List
-        } else if numberOfPlays! % 10 == 0 {
-            DotsCommon.VShowAds()
-        } else if numberOfPlays! % 5 == 0 {
-            DotsCommon.AMShowAds()
+        
+        if !DotsCommon.getAdStatus() {
+            if numberOfPlays! % 15 == 0 {
+                //TODO: App List
+            } else if numberOfPlays! % 10 == 0 {
+                DotsCommon.VShowAds()
+            } else if numberOfPlays! % 5 == 0 {
+                DotsCommon.AMShowAds()
+            }
         }
         userDefaults.setInteger(numberOfPlays! + 1, forKey: "playnum")
         
@@ -161,11 +166,19 @@ class GameOver : SKScene{
                             */
         if gameMode == 0 {
             key = "tt_highscore"
+            if length <= 11 {
+                key += "_10"
+            } else if length <= 21 {
+                key += "_20"
+            } else if length <= 31 {
+                key += "_30"
+            }
         } else if gameMode == 1 {
             key = "i_highscore"
         } else {
             key = "extraneous"
         }
+        println("reporting to \(key)")
         if let highscore: AnyObject = userDefaults.valueForKey(key) {
             if Int((highscore as! Int)) < score {
                 userDefaults.setValue(score, forKey: key)
@@ -179,7 +192,22 @@ class GameOver : SKScene{
         }
         
         if (GKLocalPlayer.localPlayer().authenticated) {
-            let gkScore = GKScore(leaderboardIdentifier: "Dots_infinite")
+            let gkScore = GKScore()
+            var leaderboard = ""
+            if gameMode == 0 {
+                leaderboard += "timetrial"
+                if length <= 11 {
+                    leaderboard += "_10"
+                } else if length <= 21 {
+                    leaderboard += "_20"
+                } else if length <= 31 {
+                    leaderboard += "_30"
+                }
+            } else {
+                leaderboard = "timetrial_20"
+            }
+            gkScore.leaderboardIdentifier = leaderboard
+            
             gkScore.value = Int64(score)
             GKScore.reportScores([gkScore], withCompletionHandler: ( { (error: NSError!) -> Void in
                 if (error != nil) {
@@ -196,6 +224,13 @@ class GameOver : SKScene{
         var key: String
         if gameMode == 0 {
             key = "tt_highscore"
+            if length <= 11 {
+                key += "_10"
+            } else if length <= 21 {
+                key += "_20"
+            } else if length <= 31 {
+                key += "_30"
+            }
         } else if gameMode == 1 {
             key = "i_highscore"
         } else {
@@ -224,4 +259,8 @@ class GameOver : SKScene{
     func sizeOfView(size: CGRect){
         sizeOfView = size
     }
+    
+    func setGameLength(length: Double) {
+        self.length = length
     }
+}

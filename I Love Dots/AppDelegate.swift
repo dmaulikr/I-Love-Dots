@@ -16,7 +16,6 @@ import Parse
 class AppDelegate: UIResponder, UIApplicationDelegate, ADBannerViewDelegate {
 
     var window: UIWindow?
-    var cognitoIdentityPoolId: String = ""
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -62,7 +61,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ADBannerViewDelegate {
             application.registerForRemoteNotificationTypes(types)
         }
         
-        
+        //if DotsCommon.userDefaults.objectForKey("adless") == nil {
+            DotsCommon.userDefaults.setBool(false, forKey: "adless")
+        //}
         
         
         return true

@@ -32,6 +32,16 @@ class MainMenu: SKScene {
     var colorPicker = 0
     let gear = SKSpriteNode(imageNamed: "gear")
     
+    //Time Selectors
+    let timeSelectBackground = SKSpriteNode(imageNamed: "timeselect-background")
+    let timeSelect10s = SKSpriteNode(imageNamed: "timeselect-10s")
+    let timeSelect20s = SKSpriteNode(imageNamed: "timeselect-20s")
+    let timeSelect30s = SKSpriteNode(imageNamed: "timeselect-30s")
+    let spacing: CGFloat = 80
+    
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    
+    
     override func didMoveToView(view: SKView) {
         
         //Add the three pulsating dots
@@ -55,6 +65,8 @@ class MainMenu: SKScene {
         rightBall.name = "rightball"
         self.addChild(rightBall)
         
+        
+
         
         
         
@@ -96,8 +108,29 @@ class MainMenu: SKScene {
         }
         thisGameMode = lastGM
         
-        DotsCommon.showAds()
+        
+        if !DotsCommon.getAdStatus() {
+            DotsCommon.showAds()
+        }
+        
+        timeSelectBackground.position = CGPointMake(CGRectGetMinX(self.frame) - timeSelectBackground.size.width, CGRectGetMidY(self.frame))
+        self.addChild(timeSelectBackground)
+        
+        
+        timeSelect10s.position = CGPointMake(timeSelectBackground.position.x, timeSelectBackground.position.y)
+        timeSelect10s.name = "10s"
+        self.addChild(timeSelect10s)
+        
+        timeSelect20s.position = CGPointMake(timeSelectBackground.position.x, timeSelectBackground.position.y)
+        timeSelect20s.name = "20s"
+        self.addChild(timeSelect20s)
+        
+        timeSelect30s.position = CGPointMake(timeSelectBackground.position.x, timeSelectBackground.position.y)
+        timeSelect30s.name = "30s"
+        self.addChild(timeSelect30s)
     }
+
+
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         let touch:UITouch = touches.first! as! UITouch
@@ -110,6 +143,7 @@ class MainMenu: SKScene {
             }
             if name == "gc_button" {
                 //gc_button.texture = SKTexture(imageNamed: "gamecenter-pushed")
+                DotsCommon.restorePurchase()
             }
             if name == "gm_selector" {
                 gm_selector.texture = SKTexture(imageNamed: "gamemode-pushed")
@@ -124,6 +158,14 @@ class MainMenu: SKScene {
             if name == "dots_logo" {
                 (touchedNode as SKNode).runAction(DotsCommon.wiggle())
             }
+            
+            if name == "10s" {
+                timeSelect10s.texture = SKTexture(imageNamed: "timeselect-10s-pushed")
+            } else if name == "20s" {
+                timeSelect20s.texture = SKTexture(imageNamed: "timeselect-20s-pushed")
+            } else if name == "30s" {
+                timeSelect30s.texture = SKTexture(imageNamed: "timeselect-30s-pushed")
+            }
         }
         
     }
@@ -136,8 +178,20 @@ class MainMenu: SKScene {
         //gc_button.texture = SKTexture(imageNamed: "gamecenter")
         gm_selector.texture = SKTexture(imageNamed: "gamemode")
         settings.texture = SKTexture(imageNamed: "settingsbutton")
+        timeSelect10s.texture = SKTexture(imageNamed: "timeselect-10s")
+        timeSelect20s.texture = SKTexture(imageNamed: "timeselect-20s")
+        timeSelect30s.texture = SKTexture(imageNamed: "timeselect-30s")
         if let name = touchedNode.name{
+            if name != "gm_startbutton" {
+                timeSelectBackground.runAction(DotsCommon.slideOutRight(self.frame, width: timeSelectBackground.size.width))
+            }
             if name == "gm_startbutton"{
+                
+                timeSelectBackground.runAction(DotsCommon.slideInFromSide(self.frame))
+                
+                
+                
+                /*
                 if thisGameMode == 0 {
                     let scene = TimeTrial(size: self.size)
                     let skView = self.view! as SKView
@@ -163,7 +217,7 @@ class MainMenu: SKScene {
                     scene.size = skView.bounds.size
                     DotsCommon.hideAds()
                     skView.presentScene(scene, transition: SKTransition.crossFadeWithDuration(0.5))
-                }
+                }*/
                 //var scene =  TimeTrial(size: self.size)
             }
             if name == "gm_selector" {
@@ -187,6 +241,38 @@ class MainMenu: SKScene {
                 scene.size = skView.bounds.size
                 skView.presentScene(scene, transition: SKTransition.moveInWithDirection(SKTransitionDirection.Right, duration: 0.2))
             }
+            if name == "10s" {
+                let gameTime: Double = 10.0
+                let scene = TimeTrial(size: self.size)
+                let skView = self.view! as SKView
+                skView.ignoresSiblingOrder = true
+                scene.scaleMode = .ResizeFill
+                scene.size = skView.bounds.size
+                scene.setGameLength(gameTime)
+                DotsCommon.hideAds()
+                skView.presentScene(scene, transition: SKTransition.crossFadeWithDuration(0.5))
+            } else if name == "20s"{
+                let gameTime: Double = 20.0
+                let scene = TimeTrial(size: self.size)
+                let skView = self.view! as SKView
+                skView.ignoresSiblingOrder = true
+                scene.scaleMode = .ResizeFill
+                scene.size = skView.bounds.size
+                scene.setGameLength(gameTime)
+                DotsCommon.hideAds()
+                skView.presentScene(scene, transition: SKTransition.crossFadeWithDuration(0.5))
+            } else if name == "30s" {
+                let gameTime: Double = 30.0
+                let scene = TimeTrial(size: self.size)
+                let skView = self.view! as SKView
+                skView.ignoresSiblingOrder = true
+                scene.scaleMode = .ResizeFill
+                scene.size = skView.bounds.size
+                scene.setGameLength(gameTime)
+                DotsCommon.hideAds()
+                skView.presentScene(scene, transition: SKTransition.crossFadeWithDuration(0.5))
+            }
+            
         }
         
     }
@@ -207,7 +293,13 @@ class MainMenu: SKScene {
         bouncingBall.xScale = CGFloat(cos(theta))
         bouncingBall.yScale = CGFloat(cos(theta))
         theta += 0.01
+        
 
+
+        timeSelect10s.position = CGPointMake(timeSelectBackground.position.x, timeSelectBackground.position.y + self.spacing)
+        timeSelect20s.position = timeSelectBackground.position
+        timeSelect30s.position = CGPointMake(timeSelectBackground.position.x, timeSelectBackground.position.y - self.spacing)
+        
     }
     
     func setMainGameMode(gamemode: Int){

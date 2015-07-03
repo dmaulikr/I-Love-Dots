@@ -10,16 +10,21 @@ import Foundation
 import SpriteKit
 import AVFoundation
 class TimeTrial : DBasicLevel{
-    let TIME_INCREMENT = 20.0
+    var TIME_INCREMENT = 20.0
     //gameTimer: NSTimer = NSTimer()
     var firstTouch = true
     var timeLeft: Int = 19
-    let timeLeftLabel = SKLabelNode(text: "20")
+    var timeLeftLabel = SKLabelNode()
     let getSmaller = SKAction.fadeOutWithDuration(1.0)
     var welcomeMessage = SKLabelNode()
 
     
     override func didMoveToView(view: SKView) {
+        
+        timeLeft = Int(TIME_INCREMENT) - 1
+        
+        timeLeftLabel.text = String(Int(TIME_INCREMENT))
+        
         NSNotificationCenter.defaultCenter().postNotificationName("hideiAdBanner", object: nil)
         ballSize = Int(CGRectGetMaxX(self.frame)/4)
         
@@ -96,6 +101,7 @@ class TimeTrial : DBasicLevel{
             scene.scaleMode = .ResizeFill
             scene.size = skView.bounds.size
             scene.setMessage("You Lost!")
+            scene.setGameLength(TIME_INCREMENT)
             scene.setEndGameMode(gm)
             gameTimer.invalidate()
             shownTimer.invalidate()
@@ -125,6 +131,7 @@ class TimeTrial : DBasicLevel{
         gameTimer.invalidate()
         let scene =  GameOver(size: self.size)
         scene.setMyScore(scoreCount)
+        scene.setGameLength(TIME_INCREMENT)
         if self.view != nil {
             let skView = self.view!
             skView.ignoresSiblingOrder = true
@@ -182,5 +189,9 @@ class TimeTrial : DBasicLevel{
         timeLeftLabel.text = "\(timeLeft)"
         timeLeft--
         //self.addChild(timeLeftLabel)
+    }
+    
+    func setGameLength(selectedTime: Double) {
+        TIME_INCREMENT = selectedTime
     }
 }
