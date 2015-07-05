@@ -22,7 +22,7 @@ class MainMenu: SKScene {
     let slideIn = SKTransition.moveInWithDirection(SKTransitionDirection.Right, duration: 1)
     let slideOut = SKTransition.moveInWithDirection(SKTransitionDirection.Left, duration: 1)
     var gm_startButton = SKSpriteNode(imageNamed: "startbutton")
-    var gc_button = SKSpriteNode(imageNamed: "gamecenter-disabled")
+    var gc_button = SKSpriteNode(imageNamed: "gamecenter")
     var gm_selector = SKSpriteNode(imageNamed: "gamemode")
     let settings = SKSpriteNode(imageNamed: "settingsbutton")
     let bouncingBall = SKShapeNode(circleOfRadius: 40)
@@ -31,6 +31,7 @@ class MainMenu: SKScene {
     var theta: Double = 0.0
     var colorPicker = 0
     let gear = SKSpriteNode(imageNamed: "gear")
+    var decisiveTimer = NSTimer()
     
     //Time Selectors
     let timeSelectBackground = SKSpriteNode(imageNamed: "timeselect-background")
@@ -43,6 +44,8 @@ class MainMenu: SKScene {
     
     
     override func didMoveToView(view: SKView) {
+        
+        decisiveTimer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: "achIndecisive", userInfo: nil, repeats: false)
         
         //Add the three pulsating dots
         //1
@@ -129,6 +132,10 @@ class MainMenu: SKScene {
         timeSelect30s.name = "30s"
         self.addChild(timeSelect30s)
     }
+    
+    override func willMoveFromView(view: SKView) {
+        decisiveTimer.invalidate()
+    }
 
 
     
@@ -142,8 +149,8 @@ class MainMenu: SKScene {
                 gm_startButton.texture = SKTexture(imageNamed: "startbutton-pushed")
             }
             if name == "gc_button" {
-                //gc_button.texture = SKTexture(imageNamed: "gamecenter-pushed")
-                DotsCommon.restorePurchase()
+                gc_button.texture = SKTexture(imageNamed: "gamecenter-pushed")
+                //DotsCommon.restorePurchase()
             }
             if name == "gm_selector" {
                 gm_selector.texture = SKTexture(imageNamed: "gamemode-pushed")
@@ -156,7 +163,14 @@ class MainMenu: SKScene {
                 colorPicker++
             }
             if name == "dots_logo" {
+                if !DotsCommon.userDefaults.boolForKey("ach_wiggles_logo") {
+                    DotsCommon.userDefaults.setBool(true, forKey: "ach_wiggles_logo")
+                    if DotsCommon.checkWiggles_Ach() {
+                        DotsCommon.achieveWiggles()
+                    }
+                }
                 (touchedNode as SKNode).runAction(DotsCommon.wiggle())
+                //DotsCommon.hostMP()
             }
             
             if name == "10s" {
@@ -175,7 +189,7 @@ class MainMenu: SKScene {
         let positionInScene = touch.locationInNode(self)
         let touchedNode = self.nodeAtPoint(positionInScene)
         gm_startButton.texture = SKTexture(imageNamed: "startbutton")
-        //gc_button.texture = SKTexture(imageNamed: "gamecenter")
+        gc_button.texture = SKTexture(imageNamed: "gamecenter")
         gm_selector.texture = SKTexture(imageNamed: "gamemode")
         settings.texture = SKTexture(imageNamed: "settingsbutton")
         timeSelect10s.texture = SKTexture(imageNamed: "timeselect-10s")
@@ -183,7 +197,7 @@ class MainMenu: SKScene {
         timeSelect30s.texture = SKTexture(imageNamed: "timeselect-30s")
         if let name = touchedNode.name{
             if name != "gm_startbutton" {
-                timeSelectBackground.runAction(DotsCommon.slideOutRight(self.frame, width: timeSelectBackground.size.width))
+                timeSelectBackground.runAction(DotsCommon.slideOutLeft(self.frame, width: timeSelectBackground.size.width))
             }
             if name == "gm_startbutton"{
                 
@@ -230,7 +244,9 @@ class MainMenu: SKScene {
                 skView.presentScene(scene, transition: SKTransition.moveInWithDirection(SKTransitionDirection.Right, duration: 0.2))
             }
             if name == "gc_button" {
-                //NSNotificationCenter.defaultCenter().postNotificationName("showLeaderboard", object: nil)
+                //DotsCommon.showLeaderboard()
+                DotsCommon.showBetaAlert()
+                decisiveTimer.invalidate()
                 //DotsCommon.VShowAds()
             }
             if name == "gear" {
@@ -239,6 +255,7 @@ class MainMenu: SKScene {
                 skView.ignoresSiblingOrder = true
                 scene.scaleMode = .ResizeFill
                 scene.size = skView.bounds.size
+                decisiveTimer.invalidate()
                 skView.presentScene(scene, transition: SKTransition.moveInWithDirection(SKTransitionDirection.Right, duration: 0.2))
             }
             if name == "10s" {
@@ -250,6 +267,7 @@ class MainMenu: SKScene {
                 scene.size = skView.bounds.size
                 scene.setGameLength(gameTime)
                 DotsCommon.hideAds()
+                decisiveTimer.invalidate()
                 skView.presentScene(scene, transition: SKTransition.crossFadeWithDuration(0.5))
             } else if name == "20s"{
                 let gameTime: Double = 20.0
@@ -260,6 +278,7 @@ class MainMenu: SKScene {
                 scene.size = skView.bounds.size
                 scene.setGameLength(gameTime)
                 DotsCommon.hideAds()
+                decisiveTimer.invalidate()
                 skView.presentScene(scene, transition: SKTransition.crossFadeWithDuration(0.5))
             } else if name == "30s" {
                 let gameTime: Double = 30.0
@@ -270,6 +289,7 @@ class MainMenu: SKScene {
                 scene.size = skView.bounds.size
                 scene.setGameLength(gameTime)
                 DotsCommon.hideAds()
+                decisiveTimer.invalidate()
                 skView.presentScene(scene, transition: SKTransition.crossFadeWithDuration(0.5))
             }
             
@@ -308,6 +328,28 @@ class MainMenu: SKScene {
     
     func sizeOfView(size: CGRect){
         sizeOfView = size
+    }
+    
+    func achIndecisive() {
+        println("Starting")
+        if !DotsCommon.userDefaults.boolForKey("ach_indecisive") {
+            println("Passed")
+            if GKLocalPlayer.localPlayer().authenticated {
+                println("Passed")
+                let thisachievement = GKAchievement(identifier: "co.bluetruck.indecisive_ach")
+                thisachievement.percentComplete = 100
+                thisachievement.showsCompletionBanner = true
+                GKAchievement.reportAchievements([thisachievement], withCompletionHandler: ( { (error: NSError!) -> Void in
+                    if error != nil {
+                        println("Error: " + error.localizedDescription)
+                    } else {
+                        println("Achievement reported: \(thisachievement.identifier)")
+                    }
+                }))
+                DotsCommon.userDefaults.setBool(true, forKey: "ach_indecisive")
+            }
+
+        }
     }
     
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import SpriteKit
+import GameKit
 
 class SettingsPane: SKScene {
     
@@ -16,7 +17,7 @@ class SettingsPane: SKScene {
     let backButton = SKLabelNode(text: "Back")
     let adlessButton = SKLabelNode(text: "Go Adless")
     let rateButton = SKLabelNode(text: "Rate!")
-    let moreGames = SKLabelNode(text: "More")
+    let shareButton = SKLabelNode(text: "Share!")
     //let restoreButton = SKLabelNode(text: "Restore Purchase")
     let gamesPlayed = SKLabelNode(text: String(DotsCommon.userDefaults.integerForKey("playnum")) + " " + "Games")
     var infoNum: Int = 1
@@ -45,25 +46,29 @@ class SettingsPane: SKScene {
         muteButton.position = CGPointMake(CGRectGetMidX(self.frame), 3*CGRectGetMaxY(self.frame)/4)
         self.addChild(muteButton)
         
+        /*
         adlessButton.position = CGPointMake(muteButton.position.x, muteButton.position.y - 60)
         adlessButton.fontSize = 30
         adlessButton.fontName = DotsCommon.font
         adlessButton.name = "adless"
         self.addChild(adlessButton)
+*/
         
-        rateButton.position = CGPointMake(adlessButton.position.x, adlessButton.position.y - 60)
+
+        rateButton.position = CGPointMake(muteButton.position.x, muteButton.position.y - 60)
         rateButton.fontSize = 30
         rateButton.fontName = DotsCommon.font
         rateButton.name = "rate"
         self.addChild(rateButton)
         
-        moreGames.position = CGPointMake(rateButton.position.x, rateButton.position.y - 60)
-        moreGames.fontSize = 30
-        moreGames.fontName = DotsCommon.font
-        moreGames.name = "more"
-        self.addChild(moreGames)
         
-        gamesPlayed.position = CGPointMake(moreGames.position.x, CGRectGetMinY(self.frame) + 60)
+        shareButton.position = CGPointMake(rateButton.position.x, rateButton.position.y - 60)
+        shareButton.fontSize = 30
+        shareButton.fontName = DotsCommon.font
+        shareButton.name = "share"
+        self.addChild(shareButton)
+        
+        gamesPlayed.position = CGPointMake(shareButton.position.x, CGRectGetMinY(self.frame) + 60)
         gamesPlayed.fontName = DotsCommon.font
         gamesPlayed.fontSize = 30
         gamesPlayed.name = "gamesplayed"
@@ -90,8 +95,8 @@ class SettingsPane: SKScene {
                 muteButton.alpha = 0.7
             } else if name == "rate" {
                 rateButton.alpha = 0.7
-            } else if name == "more" {
-                moreGames.alpha = 0.7
+            } else if name == "share" {
+                shareButton.alpha = 0.7
             } else if name == "adless" {
                 adlessButton.alpha = 0.7
             } else if name == "restorebutton" {
@@ -108,7 +113,7 @@ class SettingsPane: SKScene {
         
         backButton.alpha = 1.0
         muteButton.alpha = 1.0
-        moreGames.alpha = 1.0
+        shareButton.alpha = 1.0
         rateButton.alpha = 1.0
         adlessButton.alpha = 1.0
         //restoreButton.alpha = 1.0
@@ -133,20 +138,43 @@ class SettingsPane: SKScene {
                     muteButton.text = "Mute"
                 }
             } else if name == "rate" {
-                //let iTunesLink = "itms://itunes.apple.com/us/app/polarr-photo-editor/id988173374?mt=8"
-                //UIApplication.sharedApplication().openURL(NSURL(string: iTunesLink)!)
+                let iTunesLink = "http://bluetruck.co/"
+                UIApplication.sharedApplication().openURL(NSURL(string: iTunesLink)!)
             } else if name == "gamesplayed" {
                 gamesPlayed.runAction(DotsCommon.wiggle())
                 let timer = NSTimer.scheduledTimerWithTimeInterval(0.625, target: self, selector: "changeInfoText", userInfo: nil, repeats: false)
-            } else if name == "more" {
-                
+                if GKLocalPlayer.localPlayer().authenticated {
+                    if !DotsCommon.userDefaults.boolForKey("ach_nerd") {
+                        let thisachievement = GKAchievement(identifier: "co.bluetruck.nerd_ach")
+                        thisachievement.percentComplete = 100
+                        thisachievement.showsCompletionBanner = true
+                        GKAchievement.reportAchievements([thisachievement], withCompletionHandler: ( { (error: NSError!) -> Void in
+                            if error != nil {
+                                println("Error: " + error.localizedDescription)
+                            } else {
+                                println("Achievement reported: \(thisachievement.identifier)")
+                            }
+                        }))
+                        DotsCommon.userDefaults.setBool(true, forKey: "ach_nerd")
+                    }
+                }
+                if !DotsCommon.userDefaults.boolForKey("ach_wiggles_playnum") {
+                    DotsCommon.userDefaults.setBool(true, forKey: "ach_wiggles_playnum")
+                    if DotsCommon.checkWiggles_Ach() {
+                        DotsCommon.achieveWiggles()
+                    }
+
+                }}
+             else if name == "share" {
+                    println("Trying")
+                NSNotificationCenter.defaultCenter().postNotificationName("showSharingView", object: nil)
             } else if name == "adless" {
-                DotsCommon.buyAdless()
+                //DotsCommon.buyAdless()
             } else if name == "restorebutton" {
-                DotsCommon.restorePurchase()
+                //DotsCommon.restorePurchase()
+            }
             }
         }
-    }
     
     func muteSound(){
         userDefaults.setBool(true, forKey: "mutestatus")
@@ -176,4 +204,4 @@ class SettingsPane: SKScene {
         }
         println(infoNum)
     }
-}
+    }

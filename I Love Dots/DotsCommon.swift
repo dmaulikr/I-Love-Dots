@@ -8,6 +8,7 @@
 
 import Foundation
 import SpriteKit
+import GameKit
 
 class DotsCommon {
     static let font = "ArmagedaWide"
@@ -39,6 +40,10 @@ class DotsCommon {
     static func showShareView() {
         NSNotificationCenter.defaultCenter().postNotificationName("showSharingView", object: nil)
     }
+
+    static func showLeaderboard() {
+        NSNotificationCenter.defaultCenter().postNotificationName("showLeaderboard", object: nil)
+    }
     
     static func getAdStatus() -> Bool {
         return userDefaults.boolForKey("adless")
@@ -52,7 +57,9 @@ class DotsCommon {
         NSNotificationCenter.defaultCenter().postNotificationName("restorePurchase", object: nil)
     }
     
-    
+    static func showBetaAlert() {
+        NSNotificationCenter.defaultCenter().postNotificationName("showAlertView", object: nil)
+    }
     
     static func wiggle() -> SKAction {
         let timeInterval: NSTimeInterval = 0.125
@@ -63,8 +70,8 @@ class DotsCommon {
         return SKAction.moveTo(CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame)), duration: 0.175)
     }
     
-    static func slideOutRight(frame: CGRect, width: CGFloat) -> SKAction {
-        return SKAction.moveTo(CGPointMake(CGRectGetMaxX(frame) + width, CGRectGetMidY(frame)), duration: 0.175)
+    static func slideOutLeft(frame: CGRect, width: CGFloat) -> SKAction {
+        return SKAction.moveTo(CGPointMake(CGRectGetMinX(frame) - width, CGRectGetMidY(frame)), duration: 0.175)
     }
     
     static func getMuteStatus() {
@@ -81,5 +88,34 @@ class DotsCommon {
         }
     }
     
+    static func hostMP(){
+        NSNotificationCenter.defaultCenter().postNotificationName("hostMultiplayerGame", object: nil)
+    }
+    
+    static func checkWiggles_Ach() -> Bool{
+        userDefaults.setBool(userDefaults.boolForKey("ach_wiggles_logo") && userDefaults.boolForKey("ach_wiggles_finalscore") && userDefaults.boolForKey("ach_wiggles_playnum"), forKey: "ach_wiggles")
+        println("Will work: " + userDefaults.boolForKey("ach_wiggles").description)
+        return userDefaults.boolForKey("ach_wiggles")
+    }
+    
+    static func achieveWiggles() {
+        if userDefaults.boolForKey("ach_wiggles"){
+            println("passed 1")
+            if GKLocalPlayer.localPlayer().authenticated {
+                println("passed 2")
+                let thisachievement = GKAchievement(identifier: "co.bluetruck.wiggles_ach")
+                thisachievement.percentComplete = 100
+                thisachievement.showsCompletionBanner = true
+                GKAchievement.reportAchievements([thisachievement], withCompletionHandler: ( { (error: NSError!) -> Void in
+                    if error != nil {
+                        println("Error: " + error.localizedDescription)
+                    } else {
+                        println("Achievement reported: \(thisachievement.identifier)")
+                    }
+                }))
+                DotsCommon.userDefaults.setBool(true, forKey: "ach_wiggles")
+            }
+        }
+    }
     
 }

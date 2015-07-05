@@ -11,6 +11,7 @@ import SpriteKit
 import iAd
 import GameKit
 import Parse
+import StoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ADBannerViewDelegate {
@@ -19,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ADBannerViewDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
         
         //Setup Vungle
         var appID = "co.bluetruck.I-Love-Dots"
@@ -61,9 +63,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ADBannerViewDelegate {
             application.registerForRemoteNotificationTypes(types)
         }
         
-        //if DotsCommon.userDefaults.objectForKey("adless") == nil {
+        if DotsCommon.userDefaults.objectForKey("adless") == nil {
             DotsCommon.userDefaults.setBool(false, forKey: "adless")
-        //}
+        }
+        if DotsCommon.userDefaults.objectForKey("ach_professional") == nil {
+            DotsCommon.userDefaults.setBool(false, forKey: "ach_professional")
+        }
+        if DotsCommon.userDefaults.objectForKey("ach_nerd") == nil {
+            DotsCommon.userDefaults.setBool(false, forKey: "ach_nerd")
+        }
+        if DotsCommon.userDefaults.objectForKey("ach_fanatic") == nil {
+            DotsCommon.userDefaults.setBool(false, forKey: "ach_fanatic")
+        }
+        if DotsCommon.userDefaults.objectForKey("ach_supportive") == nil {
+            DotsCommon.userDefaults.setBool(false, forKey: "ach_supportive")
+        }
+        if DotsCommon.userDefaults.objectForKey("ach_unstable") == nil {
+            DotsCommon.userDefaults.setBool(false, forKey: "ach_unstable")
+        }
+        if DotsCommon.userDefaults.objectForKey("ach_wiggles_logo") == nil {
+            DotsCommon.userDefaults.setBool(false, forKey: "ach_wiggles_logo")
+        }
+        if DotsCommon.userDefaults.objectForKey("ach_wiggles_finalscore") == nil {
+            DotsCommon.userDefaults.setBool(false, forKey: "ach_wiggles_finalscore")
+        }
+        if DotsCommon.userDefaults.objectForKey("ach_wiggles_playnum") == nil {
+            DotsCommon.userDefaults.setBool(false, forKey: "ach_wiggles_playnum")
+        }
+        if DotsCommon.userDefaults.objectForKey("ach_wiggles") == nil {
+            DotsCommon.userDefaults.setBool(DotsCommon.userDefaults.boolForKey("ach_wiggles_finalscore") && DotsCommon.userDefaults.boolForKey("ach_wiggles_logo") && DotsCommon.userDefaults.boolForKey("ach_wiggles_playnum"), forKey: "ach_wiggles")
+        } else {
+            DotsCommon.userDefaults.setBool(DotsCommon.userDefaults.boolForKey("ach_wiggles_finalscore") && DotsCommon.userDefaults.boolForKey("ach_wiggles_logo") && DotsCommon.userDefaults.boolForKey("ach_wiggles_playnum"), forKey: "ach_wiggles")
+        }
+        if DotsCommon.userDefaults.objectForKey("ach_indecisive") == nil {
+            DotsCommon.userDefaults.setBool(false, forKey: "ach_indecisive")
+        }
+    
+        println(DotsCommon.userDefaults.boolForKey("ach_wiggles").description + " " + DotsCommon.userDefaults.boolForKey("ach_wiggles_finalscore").description + " " + DotsCommon.userDefaults.boolForKey("ach_wiggles_logo").description + " " + DotsCommon.userDefaults.boolForKey("ach_wiggles_playnum").description)
         
         
         return true

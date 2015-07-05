@@ -100,10 +100,16 @@ class GameOver : SKScene{
             }
             if name == "rslabel" {
                 restartLabel.runAction(DotsCommon.wiggle())
+                if !DotsCommon.userDefaults.boolForKey("ach_wiggles_finalscore") {
+                    DotsCommon.userDefaults.setBool(true, forKey: "ach_wiggles_finalscore")
+                    if DotsCommon.checkWiggles_Ach() {
+                        DotsCommon.achieveWiggles()
+                    }
             }
             
         }
 
+        }
     }
 
     //We use touchesEnded to make a more natural-feeling button press.
@@ -121,7 +127,15 @@ class GameOver : SKScene{
                 if self.view != nil{
                     var scene = SKScene()
                     if gameMode == 0 {
-                        scene =  TimeTrial(size: self.size)
+                        scene =  TimeTrial(size: self.size) 
+                        if length <= 11 {
+                           (scene as! TimeTrial).setGameLength(10)
+                        } else if length <= 21 {
+                            (scene as! TimeTrial).setGameLength(20)
+                        } else if length <= 31 {
+                            (scene as! TimeTrial).setGameLength(30)
+                        }
+
                     } else if gameMode == 1 {
                         scene = Infinite(size: self.size)
                     } else {
@@ -217,7 +231,63 @@ class GameOver : SKScene{
                     println("Score reported: \(gkScore.value)")
                 }
             }))
-        }}
+            if DotsCommon.userDefaults.integerForKey("playnum") >= 100 && !DotsCommon.userDefaults.boolForKey("ach_professional") {
+                let thisachievement = GKAchievement(identifier: "professional_100")
+                thisachievement.percentComplete = 100
+                thisachievement.showsCompletionBanner = true
+                GKAchievement.reportAchievements([thisachievement], withCompletionHandler: ( { (error: NSError!) -> Void in
+                    if error != nil {
+                        println("Error: " + error.localizedDescription)
+                    } else {
+                        println("Achievement reported: \(thisachievement.identifier)")
+                    }
+                }))
+                DotsCommon.userDefaults.setBool(true, forKey: "ach_professional")
+                }
+            
+            if DotsCommon.userDefaults.integerForKey("playnum") >= 200 && !DotsCommon.userDefaults.boolForKey("ach_fanatic") {
+                let thisachievement = GKAchievement(identifier: "co.bluetruck.fanatic_ach")
+                thisachievement.percentComplete = 100
+                thisachievement.showsCompletionBanner = true
+                GKAchievement.reportAchievements([thisachievement], withCompletionHandler: ( { (error: NSError!) -> Void in
+                    if error != nil {
+                        println("Error: " + error.localizedDescription)
+                    } else {
+                        println("Achievement reported: \(thisachievement.identifier)")
+                    }
+                }))
+                DotsCommon.userDefaults.setBool(true, forKey: "ach_fanatic")
+            }
+            
+            if DotsCommon.userDefaults.integerForKey("playnum") >= 500 && !DotsCommon.userDefaults.boolForKey("ach_supportive") {
+                let thisachievement = GKAchievement(identifier: "co.bluetruck.supportive_ach")
+                thisachievement.percentComplete = 100
+                thisachievement.showsCompletionBanner = true
+                GKAchievement.reportAchievements([thisachievement], withCompletionHandler: ( { (error: NSError!) -> Void in
+                    if error != nil {
+                        println("Error: " + error.localizedDescription)
+                    } else {
+                        println("Achievement reported: \(thisachievement.identifier)")
+                    }
+                }))
+                DotsCommon.userDefaults.setBool(true, forKey: "ach_supportive")
+            }
+            
+            if DotsCommon.userDefaults.integerForKey("playnum") >= 1000 && !DotsCommon.userDefaults.boolForKey("ach_unstable") {
+                let thisachievement = GKAchievement(identifier: "co.bluetruck.unstable_ach")
+                thisachievement.percentComplete = 100
+                thisachievement.showsCompletionBanner = true
+                GKAchievement.reportAchievements([thisachievement], withCompletionHandler: ( { (error: NSError!) -> Void in
+                    if error != nil {
+                        println("Error: " + error.localizedDescription)
+                    } else {
+                        println("Achievement reported: \(thisachievement.identifier)")
+                    }
+                }))
+                DotsCommon.userDefaults.setBool(true, forKey: "ach_unstable")
+            }
+            }
+        }
             
     
     func getHighScore() -> String{

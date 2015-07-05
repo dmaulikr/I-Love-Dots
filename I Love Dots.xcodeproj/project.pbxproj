@@ -52,8 +52,10 @@
 		FF4A3A181B3B4B3600CBFA13 /* TimeTrial.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A3A0F1B3B4B3600CBFA13 /* TimeTrial.swift */; };
 		FF4A3A1C1B3B4B7600CBFA13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A3A1B1B3B4B7600CBFA13 /* AppDelegate.swift */; };
 		FF5DEE891B3DD62300FE6C72 /* SettingsPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5DEE881B3DD62300FE6C72 /* SettingsPane.swift */; };
-		FF892D6F1B46728100D47E2F /* VungleSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF892D6E1B46728100D47E2F /* VungleSDK.framework */; };
+		FF6D47E11B49978800B33F6D /* VungleSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF892D6E1B46728100D47E2F /* VungleSDK.framework */; };
 		FF9C9FF51B4512E1007C3A14 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9C9FF41B4512E1007C3A14 /* StoreKit.framework */; };
+		FFAA739A1B479FD800D90156 /* Multiplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAA73991B479FD800D90156 /* Multiplayer.swift */; };
+		FFAA739C1B47BC8200D90156 /* PositionPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAA739B1B47BC8200D90156 /* PositionPacket.swift */; };
 		FFB4F42F1B3C817A00B2D6BE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4A3A291B3B4C9F00CBFA13 /* GameKit.framework */; };
 		FFC254451B3B992C001459A2 /* Supporting Files in Resources */ = {isa = PBXBuildFile; fileRef = FFC254441B3B992C001459A2 /* Supporting Files */; };
 		FFC254471B3B99B5001459A2 /* Blackout Sunrise.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFC254461B3B99B5001459A2 /* Blackout Sunrise.ttf */; };
@@ -138,6 +140,8 @@
 		FF5DEE881B3DD62300FE6C72 /* SettingsPane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPane.swift; sourceTree = "<group>"; };
 		FF892D6E1B46728100D47E2F /* VungleSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VungleSDK.framework; path = "../../../Downloads/VungleSDK.embeddedframework 2/VungleSDK.framework"; sourceTree = "<group>"; };
 		FF9C9FF41B4512E1007C3A14 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		FFAA73991B479FD800D90156 /* Multiplayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Multiplayer.swift; sourceTree = "<group>"; };
+		FFAA739B1B47BC8200D90156 /* PositionPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionPacket.swift; sourceTree = "<group>"; };
 		FFC254441B3B992C001459A2 /* Supporting Files */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Supporting Files"; sourceTree = "<group>"; };
 		FFC254461B3B99B5001459A2 /* Blackout Sunrise.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Blackout Sunrise.ttf"; path = "I Love Dots/Supporting Files/Blackout Sunrise.ttf"; sourceTree = "<group>"; };
 		FFD4C0371B41B0F100D9E1BD /* DancingDot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DancingDot.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF6D47E11B49978800B33F6D /* VungleSDK.framework in Frameworks */,
 				FF317BCC1B44E029006855A6 /* Security.framework in Frameworks */,
 				FF317BCA1B44E022006855A6 /* QuartzCore.framework in Frameworks */,
 				FF317BC81B44DFFC006855A6 /* MobileCoreServices.framework in Frameworks */,
@@ -159,7 +164,6 @@
 				FF317BC21B44DFDB006855A6 /* libz.dylib in Frameworks */,
 				FF317BBF1B44DFBE006855A6 /* Bolts.framework in Frameworks */,
 				FF317BC01B44DFBE006855A6 /* Parse.framework in Frameworks */,
-				FF892D6F1B46728100D47E2F /* VungleSDK.framework in Frameworks */,
 				FF317BA71B44AB76006855A6 /* libsqlite3.dylib in Frameworks */,
 				FF317B861B448D61006855A6 /* AdSupport.framework in Frameworks */,
 				FF9C9FF51B4512E1007C3A14 /* StoreKit.framework in Frameworks */,
@@ -269,6 +273,8 @@
 				FF4A3A0B1B3B4B3600CBFA13 /* GameViewController.swift */,
 				FF317B971B44A5E9006855A6 /* I_Love_Dots_Bridging_Header.h */,
 				FF5DEE881B3DD62300FE6C72 /* SettingsPane.swift */,
+				FFAA73991B479FD800D90156 /* Multiplayer.swift */,
+				FFAA739B1B47BC8200D90156 /* PositionPacket.swift */,
 				FF4A3A0C1B3B4B3600CBFA13 /* Infinite.swift */,
 				FF4A3A0D1B3B4B3600CBFA13 /* LoadingScreen.swift */,
 				FF4A3A0E1B3B4B3600CBFA13 /* MainMenu.swift */,
@@ -455,6 +461,7 @@
 				FF4A3A151B3B4B3600CBFA13 /* Infinite.swift in Sources */,
 				FF4A3A171B3B4B3600CBFA13 /* MainMenu.swift in Sources */,
 				FF4A3A131B3B4B3600CBFA13 /* GameScene.swift in Sources */,
+				FFAA739A1B479FD800D90156 /* Multiplayer.swift in Sources */,
 				FF4A3A111B3B4B3600CBFA13 /* GameModeSelector.swift in Sources */,
 				FF4A3A101B3B4B3600CBFA13 /* DBasicLevel.swift in Sources */,
 				FF4A3A161B3B4B3600CBFA13 /* LoadingScreen.swift in Sources */,
@@ -463,6 +470,7 @@
 				FF5DEE891B3DD62300FE6C72 /* SettingsPane.swift in Sources */,
 				FF4A3A1C1B3B4B7600CBFA13 /* AppDelegate.swift in Sources */,
 				FF317B701B444E47006855A6 /* DotsCommon.swift in Sources */,
+				FFAA739C1B47BC8200D90156 /* PositionPacket.swift in Sources */,
 				FF317B6E1B444D0D006855A6 /* TimeSelector.swift in Sources */,
 				FFD4C0381B41B0F100D9E1BD /* DancingDot.swift in Sources */,
 				FF4A3A121B3B4B3600CBFA13 /* GameOver.swift in Sources */,
@@ -628,6 +636,10 @@
 					Dots,
 					/Users/chrisgilardi/Downloads/VungleSDK.embeddedframework,
 					2,
+					/Users/chrisgilardi/Downloads/VungleSDK.embeddedframework,
+					2,
+					/Users/chrisgilardi/Downloads/VungleSDK.embeddedframework,
+					2,
 				);
 				INFOPLIST_FILE = "I Love Dots/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
@@ -661,6 +673,10 @@
 					"$(PROJECT_DIR)/I",
 					Love,
 					Dots,
+					/Users/chrisgilardi/Downloads/VungleSDK.embeddedframework,
+					2,
+					/Users/chrisgilardi/Downloads/VungleSDK.embeddedframework,
+					2,
 					/Users/chrisgilardi/Downloads/VungleSDK.embeddedframework,
 					2,
 				);

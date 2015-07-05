@@ -31,7 +31,7 @@ extension SKNode {
     }
 }
 
-class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterControllerDelegate, SKPaymentTransactionObserver, SKProductsRequestDelegate {
+class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterControllerDelegate, GKMatchmakerViewControllerDelegate, GKMatchDelegate, SKPaymentTransactionObserver, SKProductsRequestDelegate, UIAlertViewDelegate {
     
     var localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
     var interstitial: GADInterstitial!
@@ -49,7 +49,6 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
         
         
         
-        
         interstitial = AMCreateAd()
         
         localPlayer.authenticateHandler = {(ViewController, error) -> Void in if((ViewController) != nil) { self.presentViewController(ViewController!, animated: true, completion: nil) } }
@@ -57,7 +56,7 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
         loadAds()
         super.viewDidLoad()
 
-        SKPaymentQueue.defaultQueue().addTransactionObserver(self)
+        //SKPaymentQueue.defaultQueue().addTransactionObserver(self)
         
         
         
@@ -75,6 +74,8 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showSharingView", name: "showSharingView", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "buyAdless", name: "buyAdless", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "restorePurchase", name: "buyAdless", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "hostMultiplayerGame", name: "hostMultiplayerGame", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showAlertView", name: "showAlertView", object: nil)
         
         
         
@@ -189,12 +190,13 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
     
     func showSharingView(){
         let textToShare = "Check out the Game, \"I Love Dots\" On the App Store!"
+        println("Called: showSharingView()")
         
-        if let myWebsite = NSURL(string: "http://google.com/")
+        if let myWebsite = NSURL(string: "https://docs.google.com/forms/d/1btnq1WLFOQhh6rQGPYjm9R9vN2Amwey_ViLgxdy7JWk/viewform")
         {
             let objectsToShare = [textToShare, myWebsite]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            
+            println("Presenting Share VC")
             self.presentViewController(activityVC, animated: true, completion: nil)
         }
     }
@@ -204,8 +206,8 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
         // We check that we are allow to make the purchase.
         if (SKPaymentQueue.canMakePayments())
         {
-            var productID:NSSet = NSSet(object: self.product_id!);
-            var productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as Set<NSObject>);
+            var productID: NSSet = NSSet(object: self.product_id!);
+            var productsRequest: SKProductsRequest = SKProductsRequest(productIdentifiers: productID as Set<NSObject>);
             productsRequest.delegate = self;
             productsRequest.start();
             println("Fething Products");
@@ -272,10 +274,40 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
     }
     
     func restorePurchase() {
-        
         SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
+        DotsCommon.userDefaults.setBool(true, forKey: "adless")
     }
     
+    
+    func hostMultiplayerGame() {
+        var request = GKMatchRequest()
+        request.minPlayers = 2
+        request.maxPlayers = 2
+        request.defaultNumberOfPlayers = 2
+        request.inviteMessage = GKLocalPlayer.localPlayer().displayName + " wants to go head-to-head!"
+        
+        let mmvc = GKMatchmakerViewController(matchRequest: request)
+        mmvc.matchmakerDelegate = self
+        self.showViewController(mmvc, sender: self)
+        self.presentViewController(mmvc, animated: true, completion: nil)
+    }
 
+    func matchmakerViewControllerWasCancelled(viewController: GKMatchmakerViewController!) {
+        println("Cancelling")
+        viewController.dismissViewControllerAnimated(true, completion: nil)
+        /*
+        self.dismissViewControllerAnimated(true, completion: ({
+            var gvc = GameViewController();
+            self.presentViewController(gvc, animated: true, completion: nil)}))*/
+    }
+    
+    func matchmakerViewController(viewController: GKMatchmakerViewController!, didFailWithError error: NSError!) {
+        println("Could not connect: \(error.description)")
+    }
+    
+    func showAlertView() {
+        let alert = UIAlertView(title: "This is Beta!", message: "This feature will work in the release version of the game. For now, though, it does not", delegate: self, cancelButtonTitle: "Close")
+        alert.show()
+    }
 
 }
