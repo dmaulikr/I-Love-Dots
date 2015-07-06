@@ -14,7 +14,7 @@ import GameKit
 import Darwin
 //import AdColony
 
-class MainMenu: SKScene {
+class MainMenu: SKScene, UIAlertViewDelegate {
     var thisGameMode: Int = Int()
     private let userDefaults = DotsCommon.userDefaults
     var lastGM: Int = 0
@@ -32,6 +32,8 @@ class MainMenu: SKScene {
     var colorPicker = 0
     let gear = SKSpriteNode(imageNamed: "gear")
     var decisiveTimer = NSTimer()
+    var dots_logo: SKSpriteNode!
+    var touchcount = 0
     
     //Time Selectors
     let timeSelectBackground = SKSpriteNode(imageNamed: "timeselect-background")
@@ -45,38 +47,56 @@ class MainMenu: SKScene {
     
     override func didMoveToView(view: SKView) {
         
+        let node = SKNode()
+        node.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
+        self.addChild(node)
+        
         decisiveTimer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: "achIndecisive", userInfo: nil, repeats: false)
         
         //Add the three pulsating dots
         //1
-        bouncingBall.position = CGPointMake(CGRectGetMidX(self.frame), 3*CGRectGetMaxY(self.frame)/8)
         bouncingBall.fillColor = SKColor(red: 0, green: 0.749, blue: 1.0, alpha: 1)
         bouncingBall.name = "middleball"
-        self.addChild(bouncingBall)
+
         
         //2
-        leftBall.position = CGPointMake(CGRectGetMidX(self.frame) - 50, 3*CGRectGetMaxY(self.frame)/8)
         leftBall.fillColor = SKColor(red: 0, green: 0, blue: 1.0, alpha: 1)
         leftBall.strokeColor = leftBall.fillColor
         leftBall.name = "leftball"
-        self.addChild(leftBall)
         
         //3
-        rightBall.position = CGPointMake(CGRectGetMidX(self.frame) + 50, 3*CGRectGetMaxY(self.frame)/8)
         rightBall.fillColor = leftBall.fillColor
         rightBall.strokeColor = rightBall.fillColor
         rightBall.name = "rightball"
+
+        if DotsCommon.isiPad() {
+            bouncingBall.position = CGPointMake(node.position.x, node.position.y - 71)
+            leftBall.position = CGPointMake(node.position.x - 50, bouncingBall.position.y)
+            rightBall.position = CGPointMake(node.position.x + 50, leftBall.position.y)
+            gm_startButton.position = CGPointMake(node.position.x - 60, node.position.y - 180)
+            gc_button.position = CGPointMake(gm_startButton.position.x + 120, gm_startButton.position.y)
+            
+        } else{
+            if DotsCommon.getDevice() == "iPhone 4S" || DotsCommon.getDevice() == "Simulator" {
+                gm_startButton.position = CGPointMake(CGRectGetMidX(self.frame) - 60, CGRectGetMidY(self.frame)-150)
+                gc_button.position = CGPointMake(CGRectGetMidX(self.frame) + 60, gm_startButton.position.y)
+            } else {
+                gm_startButton.position = CGPointMake(CGRectGetMidX(self.frame) - 60, CGRectGetMidY(self.frame)-180)
+                gc_button.position = CGPointMake(CGRectGetMidX(self.frame) + 60, gm_startButton.position.y)
+            }
+            bouncingBall.position = CGPointMake(CGRectGetMidX(self.frame), 3*CGRectGetMaxY(self.frame)/8)
+            println("Difference: \(node.position.y - bouncingBall.position.y)")
+            leftBall.position = CGPointMake(CGRectGetMidX(self.frame) - 50, bouncingBall.position.y)
+            rightBall.position = CGPointMake(CGRectGetMidX(self.frame) + 50, leftBall.position.y)
+
+        }
+        
+        self.addChild(bouncingBall)
+        self.addChild(leftBall)
         self.addChild(rightBall)
         
         
-
-        
-        
-        
-        print(CGRectGetMidY(self.frame), appendNewline: false)
-        
-        //TODO: Add Background Animation
-        self.backgroundColor = UIColor(red: 0.94, green: 1.0, blue: 1.0, alpha: 1.0)
+        self.backgroundColor = UIColor.whiteColor()
         /*
         let welcomelabel = SKLabelNode(text: "Dots!")
         welcomelabel.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)/2)
@@ -85,20 +105,27 @@ class MainMenu: SKScene {
         */
         
         
-        let dots_logo = SKSpriteNode(imageNamed: "Loading")
-        dots_logo.position = CGPointMake(CGRectGetMidX(self.frame), 3*CGRectGetMaxY(self.frame)/4)
-        dots_logo.size = CGSize(width: 3*CGRectGetMaxX(self.frame)/4, height: 3*CGRectGetMaxX(self.frame)/4)
+        dots_logo = SKSpriteNode(imageNamed: "Loading")
+        if DotsCommon.isiPad() {
+            dots_logo.size = CGSize(width: 240, height: 240)
+            dots_logo.position = CGPointMake(node.position.x, node.position.y + 142)
+            println("iPad")
+        } else {
+            dots_logo.size = CGSize(width: 3*CGRectGetMaxX(self.frame)/4, height: 3*CGRectGetMaxX(self.frame)/4)
+            println("(WIDTH: \(dots_logo.size.width)" + ", HEIGHT: \(dots_logo.size.height))")
+            println("iPhone")
+            dots_logo.position = CGPointMake(CGRectGetMidX(self.frame), 3*CGRectGetMaxY(self.frame)/4)
+            println("Difference: \(node.position.y - dots_logo.position.y)")
+        }
+
+
         dots_logo.name = "dots_logo"
         self.addChild(dots_logo)
         
         gm_startButton.name = "gm_startbutton"
-        //gm_startButton.fillColor = SKColor.redColor()
-        gm_startButton.position = CGPointMake(CGRectGetMidX(self.frame) - 60, CGRectGetMidY(self.frame)-180)
         self.addChild(gm_startButton)
         
-        
         gc_button.name = "gc_button"
-        gc_button.position = CGPointMake(CGRectGetMidX(self.frame) + 60, CGRectGetMidY(self.frame)-180)
         self.addChild(gc_button)
         
         gear.size = CGSize(width: 35, height: 35)
@@ -168,6 +195,11 @@ class MainMenu: SKScene {
                     if DotsCommon.checkWiggles_Ach() {
                         DotsCommon.achieveWiggles()
                     }
+                }
+                touchcount++
+                if touchcount % 20 == 0 {
+                    let alert = UIAlertView(title: "Stop Tapping Me!", message: "It really hurts!", delegate: self, cancelButtonTitle: "I'm Sorry")
+                    alert.show()
                 }
                 (touchedNode as SKNode).runAction(DotsCommon.wiggle())
                 //DotsCommon.hostMP()
@@ -244,8 +276,8 @@ class MainMenu: SKScene {
                 skView.presentScene(scene, transition: SKTransition.moveInWithDirection(SKTransitionDirection.Right, duration: 0.2))
             }
             if name == "gc_button" {
-                //DotsCommon.showLeaderboard()
-                DotsCommon.showBetaAlert()
+                DotsCommon.showLeaderboard()
+                //DotsCommon.showBetaAlert()
                 decisiveTimer.invalidate()
                 //DotsCommon.VShowAds()
             }

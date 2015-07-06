@@ -68,7 +68,12 @@ class SettingsPane: SKScene {
         shareButton.name = "share"
         self.addChild(shareButton)
         
-        gamesPlayed.position = CGPointMake(shareButton.position.x, CGRectGetMinY(self.frame) + 60)
+        if DotsCommon.isiPad() {
+            gamesPlayed.position = CGPointMake(shareButton.position.x, CGRectGetMinY(self.frame) + 80)
+        } else {
+            gamesPlayed.position = CGPointMake(shareButton.position.x, CGRectGetMinY(self.frame) + 60)
+        }
+
         gamesPlayed.fontName = DotsCommon.font
         gamesPlayed.fontSize = 30
         gamesPlayed.name = "gamesplayed"
@@ -193,7 +198,14 @@ class SettingsPane: SKScene {
     
     func changeInfoText(){
         if infoNum == 0 {
-            gamesPlayed.text = String(DotsCommon.userDefaults.integerForKey("playnum")) + " " + "Games"
+            var gameCount = DotsCommon.userDefaults.integerForKey("playnum")
+            var gameSig = String()
+            if gameCount == 1 {
+                gameSig = "Game"
+            } else {
+                gameSig = "Games"
+            }
+            gamesPlayed.text = "\(gameCount) \(gameSig)!"
             self.infoNum = 1
         } else if infoNum == 1 {
             let nsObject: AnyObject? = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"]

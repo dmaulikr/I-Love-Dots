@@ -35,7 +35,7 @@ class TimeTrial : DBasicLevel{
         print(blopSound)
         
         //Color the Background
-        self.backgroundColor = UIColor(red: 0.94, green: 1.0, blue: 1.0, alpha: 1.0)
+        self.backgroundColor = UIColor.whiteColor()
         
         //Add the first ball to the scene, uses SKShapeNode, r= 1/4 of the screen size)
         addBall(ballSize)

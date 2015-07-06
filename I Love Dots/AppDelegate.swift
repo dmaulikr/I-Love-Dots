@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ADBannerViewDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        println(DotsCommon.getDevice())
         
         //Setup Vungle
         var appID = "co.bluetruck.I-Love-Dots"

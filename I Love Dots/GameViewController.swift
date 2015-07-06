@@ -45,10 +45,6 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
         
         product_id = "DotsAdless"
         
-        
-        
-        
-        
         interstitial = AMCreateAd()
         
         localPlayer.authenticateHandler = {(ViewController, error) -> Void in if((ViewController) != nil) { self.presentViewController(ViewController!, animated: true, completion: nil) } }
@@ -151,26 +147,32 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    
     func showLeaderboard() {
-        
+        println("Trying to show GKLeaderboard")
         // declare the Game Center viewController
-        var gcViewController: GKGameCenterViewController = GKGameCenterViewController()
-        gcViewController.gameCenterDelegate = self
+        if GKLocalPlayer.localPlayer().authenticated {
+            var gcViewController: GKGameCenterViewController = GKGameCenterViewController()
+            gcViewController.gameCenterDelegate = self
         
-        gcViewController.viewState = GKGameCenterViewControllerState.Leaderboards
+            gcViewController.viewState = GKGameCenterViewControllerState.Leaderboards
         
-        // Remember to replace "Best Score" with your Leaderboard ID (which you have created in iTunes Connect)
-        gcViewController.leaderboardIdentifier = "Dots_infinite"
-        // Finally present the Game Center ViewController
-        self.showViewController(gcViewController, sender: self)
-        self.navigationController?.pushViewController(gcViewController, animated: true)
-        self.presentViewController(gcViewController, animated: true, completion: nil)
+            // Remember to replace "Best Score" with your Leaderboard ID (which you have created in iTunes Connect)
+            gcViewController.leaderboardIdentifier = "timetrial_20"
+            // Finally present the Game Center ViewController
+            self.showViewController(gcViewController, sender: self)
+            self.navigationController?.pushViewController(gcViewController, animated: true)
+            self.presentViewController(gcViewController, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertView(title: "Game Center Not Logged In", message: "You need to have game center enabled to use the Leaderboards/Achievements feature.", delegate: self, cancelButtonTitle: "Close")
+            alert.show()
+        }
     }
     
     func AMCreateAd() -> GADInterstitial {
         var ad = GADInterstitial(adUnitID: "ca-app-pub-1206890352094684/4884623048")
         var request = GADRequest()
-        request.testDevices = ["74c2d2e1ae6dd8683b0a5ce977872e80"]
+        request.testDevices = ["74c2d2e1ae6dd8683b0a5ce977872e80", "kGADSimulatorID"]
         ad.loadRequest(request)
         
         return ad
@@ -196,6 +198,9 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
         {
             let objectsToShare = [textToShare, myWebsite]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityVC.popoverPresentationController?.sourceView = self.view
+            activityVC.popoverPresentationController?.sourceRect = CGRect(origin: CGPointMake(CGRectGetMidX(self.view.frame), CGRectGetMaxY(self.view.frame)/4 + 125), size: CGSize(width: 0, height: 0))
+            activityVC.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.Up
             println("Presenting Share VC")
             self.presentViewController(activityVC, animated: true, completion: nil)
         }

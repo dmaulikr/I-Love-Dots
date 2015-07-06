@@ -32,7 +32,7 @@ class GameOver : SKScene{
         }
         
         //Background Color
-        self.backgroundColor = UIColor(red: 0.94, green: 1.0, blue: 1.0, alpha: 1.0)
+        self.backgroundColor = UIColor.whiteColor()
         
         //Restart Label (You lost! etc.)
         restartLabel.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame)/2)
@@ -69,14 +69,12 @@ class GameOver : SKScene{
         mainMenuButton.name = "mmbutton"
         self.addChild(mainMenuButton)
         
-        //Load AdMob Interstitials
+        //Load AdMob/Vungle Interstitials
         var numberOfPlays: Int? = userDefaults.integerForKey("playnum")
         println(numberOfPlays)
         
         if !DotsCommon.getAdStatus() {
-            if numberOfPlays! % 15 == 0 {
-                //TODO: App List
-            } else if numberOfPlays! % 10 == 0 {
+            if numberOfPlays! % 10 == 0 {
                 DotsCommon.VShowAds()
             } else if numberOfPlays! % 5 == 0 {
                 DotsCommon.AMShowAds()
