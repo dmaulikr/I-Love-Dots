@@ -143,8 +143,7 @@ class SettingsPane: SKScene {
                     muteButton.text = "Mute"
                 }
             } else if name == "rate" {
-                let iTunesLink = "http://bluetruck.co/"
-                UIApplication.sharedApplication().openURL(NSURL(string: iTunesLink)!)
+                 UIApplication.sharedApplication().openURL(NSURL(string : "itms://itunes.apple.com/us/app/i-love-dots!/id1004696124?ls=1&mt=8")!);
             } else if name == "gamesplayed" {
                 gamesPlayed.runAction(DotsCommon.wiggle())
                 let timer = NSTimer.scheduledTimerWithTimeInterval(0.625, target: self, selector: "changeInfoText", userInfo: nil, repeats: false)

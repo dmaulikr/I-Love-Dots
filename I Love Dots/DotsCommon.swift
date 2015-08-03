@@ -78,6 +78,11 @@ class DotsCommon {
         println("Showing AdMob Interstitial!")
     }
     
+    static func AMShowBanner() {
+        NSNotificationCenter.defaultCenter().postNotificationName("AMShowBanner", object: nil)
+        println("Showing AdMob Banner")
+    }
+    
     static func VShowAds() {
         NSNotificationCenter.defaultCenter().postNotificationName("VShowAds", object: nil)
         println("Showing Vungle Ads!")

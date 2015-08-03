@@ -41,7 +41,8 @@ class TimeTrial : DBasicLevel{
         addBall(ballSize)
         
         //Add the welcome message: "Press the Ball"
-        welcomeMessage = SKLabelNode(text: "Press the Ball")
+        welcomeMessage = SKLabelNode(text: "Tap the Dot")
+        welcomeMessage.fontName = DotsCommon.font
         welcomeMessage.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
         welcomeMessage.fontColor = SKColor.blackColor()
         welcomeMessage.fontSize = 30
@@ -51,7 +52,7 @@ class TimeTrial : DBasicLevel{
         //Setup the score counter
         score.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
         score.fontSize = 150
-        score.fontName = "Avenir Next"
+        score.fontName = DotsCommon.font
         score.fontColor = SKColor.blackColor()
         
         //Timer visible to User
@@ -59,6 +60,7 @@ class TimeTrial : DBasicLevel{
         timeLeftLabel.fontColor = SKColor.blackColor()
         timeLeftLabel.fontSize = 30
         timeLeftLabel.name = "timer"
+        timeLeftLabel.fontName = DotsCommon.font
         timeLeftLabel.userInteractionEnabled = false
 
     }
